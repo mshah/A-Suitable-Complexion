@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="730" viewBox="0 0 1500 730" role="img" aria-labelledby="title desc">
+<title id="title">The promise machine: a conceptual market cycle</title><desc id="desc">Five stages: social preference, advertised prospects, a private purchase, commercial revenue, and amplification of the ideal. Diagram is interpretive, not estimated causal proof.</desc>
+<rect width="1500" height="730" fill="#F7F2E8"/>
+<text x="68" y="83" fill="#292321" font-size="49" font-family="Georgia,serif">The promise machine</text>
+<text x="70" y="125" fill="#63584D" font-size="21" font-family="Arial,sans-serif">How a social hierarchy can become a repeating commercial narrative</text>
+<rect x="95" y="245" width="360" height="135" rx="4" fill="#FFFDF7" stroke="#B0A08E" stroke-width="2"/>
+<text x="116" y="276" font-size="18" font-family="Arial,sans-serif" fill="#8A5B3E">01</text>
+<text x="116" y="310" font-size="24" font-weight="bold" font-family="Arial,sans-serif" fill="#28211F">Social preference</text>
+<text x="116" y="339" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">A complexion is</text>
+<text x="116" y="360" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">ranked as desirable</text>
+<rect x="520" y="245" width="360" height="135" rx="4" fill="#FFFDF7" stroke="#B0A08E" stroke-width="2"/>
+<text x="541" y="276" font-size="18" font-family="Arial,sans-serif" fill="#8A5B3E">02</text>
+<text x="541" y="310" font-size="24" font-weight="bold" font-family="Arial,sans-serif" fill="#28211F">Advertising</text>
+<text x="541" y="339" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">A cream is framed</text>
+<text x="541" y="360" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">as opportunity</text>
+<rect x="945" y="245" width="360" height="135" rx="4" fill="#FFFDF7" stroke="#B0A08E" stroke-width="2"/>
+<text x="966" y="276" font-size="18" font-family="Arial,sans-serif" fill="#8A5B3E">03</text>
+<text x="966" y="310" font-size="24" font-weight="bold" font-family="Arial,sans-serif" fill="#28211F">Private purchase</text>
+<text x="966" y="339" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">The social problem</text>
+<text x="966" y="360" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">becomes an individual task</text>
+<rect x="945" y="450" width="360" height="135" rx="4" fill="#FFFDF7" stroke="#B0A08E" stroke-width="2"/>
+<text x="966" y="481" font-size="18" font-family="Arial,sans-serif" fill="#8A5B3E">04</text>
+<text x="966" y="515" font-size="24" font-weight="bold" font-family="Arial,sans-serif" fill="#28211F">Commercial returns</text>
+<text x="966" y="544" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">Revenue circulates</text>
+<text x="966" y="565" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">through a market</text>
+<rect x="520" y="450" width="360" height="135" rx="4" fill="#FFFDF7" stroke="#B0A08E" stroke-width="2"/>
+<text x="541" y="481" font-size="18" font-family="Arial,sans-serif" fill="#8A5B3E">05</text>
+<text x="541" y="515" font-size="24" font-weight="bold" font-family="Arial,sans-serif" fill="#28211F">Amplified ideal</text>
+<text x="541" y="544" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">Images and claims</text>
+<text x="541" y="565" font-size="17" font-family="Arial,sans-serif" fill="#5E544C">reinforce aspiration</text>
+<path d="M455 312 L520 312" stroke="#6C554A" stroke-width="4" fill="none" marker-end="url(#a)"/>
+<path d="M880 312 L945 312" stroke="#6C554A" stroke-width="4" fill="none" marker-end="url(#a)"/>
+<path d="M1125 380 L1125 450" stroke="#6C554A" stroke-width="4" fill="none" marker-end="url(#a)"/>
+<path d="M945 515 L880 515" stroke="#6C554A" stroke-width="4" fill="none" marker-end="url(#a)"/>
+<path d="M520 515 H275 V386" stroke="#6C554A" stroke-width="4" fill="none" marker-end="url(#a)"/>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#6C554A"/></marker></defs>
+<text x="70" y="660" font-size="18" font-family="Arial,sans-serif" fill="#514942">Interpretive systems model · Not a measured economic law or a claim that every advertisement follows this loop.</text>
+<text x="70" y="692" font-size="16" font-family="Arial,sans-serif" fill="#6B6056">Context: historic advertising [S02, S08, S09]; no universal hiring advantage established [S10].</text>
+</svg>

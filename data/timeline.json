@@ -1,0 +1,182 @@
+[
+  {
+    "id": "T01",
+    "era": "Precolonial / early modern",
+    "date": "Before industrial cosmetics",
+    "place": "India / Asia",
+    "headline": "Beauty traditions precede commercial creams",
+    "body": "Preferences for lighter skin appear in multiple historical contexts; the exhibition rejects a single-origin account.",
+    "caveat": "Do not assign a universal start date to colourism.",
+    "sources": "S02;S03"
+  },
+  {
+    "id": "T02",
+    "era": "Late colonial period",
+    "date": "1890s",
+    "place": "UK / global",
+    "headline": "Hazeline line sold as skin care",
+    "body": "British manufacturer Burroughs Wellcome marketed Hazeline products first around hygiene and skin care, ahead of later beauty and whitening language.",
+    "caveat": "Heritage/medical claims not identical to subsequent Indian ads.",
+    "sources": "S03;S05"
+  },
+  {
+    "id": "T03",
+    "era": "Late colonial period",
+    "date": "c. 1909",
+    "place": "UK / global",
+    "headline": "Snow enters the copy",
+    "body": "A British Hazeline Snow leaflet advertised the effect of making skin soft and white.",
+    "caveat": "British item, not confirmed as India-specific.",
+    "sources": "S05"
+  },
+  {
+    "id": "T04",
+    "era": "Colonial India",
+    "date": "1912",
+    "place": "India",
+    "headline": "Burroughs Wellcome opens Bombay branch",
+    "body": "Global pharmaceutical advertising and local Indian marketing become connected through a formal branch.",
+    "caveat": "Branch year documented in archival academic article.",
+    "sources": "S03"
+  },
+  {
+    "id": "T05",
+    "era": "Colonial India",
+    "date": "1919",
+    "place": "India",
+    "headline": "Afghan Snow launches",
+    "body": "E. S. Patanwala’s brand made a locally produced Indian beauty cream part of the category; snow imagery helped circulate complexion ideals.",
+    "caveat": "1919 date is reported history; keep source attribution.",
+    "sources": "S04;S31"
+  },
+  {
+    "id": "T06",
+    "era": "Colonial India",
+    "date": "1930",
+    "place": "India",
+    "headline": "Hazeline Snow in Indian press",
+    "body": "The Hindu carried Hazeline Snow product advertising in October 1930.",
+    "caveat": "Indian original reproduced in Cambridge article; reproduction clearance pending.",
+    "sources": "S03"
+  },
+  {
+    "id": "T07",
+    "era": "Parallel Asian history",
+    "date": "1937",
+    "place": "Japan",
+    "headline": "Shiseido Whitening Cream",
+    "body": "Shiseido lists a Whitening Cream within its modern facial-care programme.",
+    "caveat": "Comparative case, not evidence of identical cultural dynamics.",
+    "sources": "S06"
+  },
+  {
+    "id": "T08",
+    "era": "Colonial India",
+    "date": "1940s",
+    "place": "India",
+    "headline": "The modern woman appears in Hazeline advertising",
+    "body": "Indian print advertisements increasingly paired creams with women and modern beauty imagery.",
+    "caveat": "Historical interpretation drawn from academic archive research.",
+    "sources": "S03"
+  },
+  {
+    "id": "T09",
+    "era": "Early postcolonial",
+    "date": "1947–1950",
+    "place": "India",
+    "headline": "Independence; whitening rhetoric survives",
+    "body": "After independence, corporate discussions still promoted local appeal of Hazeline’s skin-whitening effect.",
+    "caveat": "1950 company correspondence documented in archival research.",
+    "sources": "S03"
+  },
+  {
+    "id": "T10",
+    "era": "Postcolonial mass market",
+    "date": "1975–1978",
+    "place": "India",
+    "headline": "Fair & Lovely reaches the market",
+    "body": "Reporting dates pilot/test marketing to March 1975; HUL’s own anniversary chronology dates its launch to 1978.",
+    "caveat": "Show both dates with source labels, not one artificially certain date.",
+    "sources": "S07;S32"
+  },
+  {
+    "id": "T11",
+    "era": "Postcolonial mass market",
+    "date": "1990s–2000s",
+    "place": "India",
+    "headline": "From personal care to social aspiration",
+    "body": "Beauty marketing links complexion with marriage, romance, self-confidence and work; competition expands.",
+    "caveat": "Advertising messages are not proof of real economic returns.",
+    "sources": "S08;S32"
+  },
+  {
+    "id": "T12",
+    "era": "Regional campaigns",
+    "date": "2008",
+    "place": "Philippines",
+    "headline": "GlutaMAX “From ebony to Ivory”",
+    "body": "A documented ad uses a stark before/after complexion transformation.",
+    "caveat": "Archival reproduction needs clearance.",
+    "sources": "S25"
+  },
+  {
+    "id": "T13",
+    "era": "Regulation and backlash",
+    "date": "2014",
+    "place": "India",
+    "headline": "Fairness-advertising guidelines",
+    "body": "ASCI warns against associating dark skin with unhappiness, inferior status, marriage disadvantage or reduced employment prospects.",
+    "caveat": "A self-regulatory guideline, not proof violations ended.",
+    "sources": "S08"
+  },
+  {
+    "id": "T14",
+    "era": "Regional campaigns",
+    "date": "2016",
+    "place": "Thailand",
+    "headline": "“White makes you win”",
+    "body": "Seoul Secret’s Snowz supplement campaign causes criticism and is removed.",
+    "caveat": "Avoid presenting one campaign as representative of all Thailand.",
+    "sources": "S21"
+  },
+  {
+    "id": "T15",
+    "era": "Rebranding",
+    "date": "2019–2020",
+    "place": "India",
+    "headline": "Fair & Lovely becomes Glow & Lovely",
+    "body": "HUL describes a 2019 messaging shift to glow and radiance, followed by 2020 renaming.",
+    "caveat": "Company states formulation evolved and product is not bleaching cream.",
+    "sources": "S09;S28"
+  },
+  {
+    "id": "T16",
+    "era": "Public health",
+    "date": "2023",
+    "place": "Global",
+    "headline": "Mercury rule strengthens",
+    "body": "Minamata Convention parties decide to remove a 1ppm threshold from the cosmetics phase-out provision.",
+    "caveat": "Implementation varies by country.",
+    "sources": "S18"
+  },
+  {
+    "id": "T17",
+    "era": "Consumer safety",
+    "date": "2024–2026",
+    "place": "UK",
+    "headline": "Illegal-product warnings continue",
+    "body": "Trading Standards warns about hazardous products; later alerts show illegal skin-lightening cosmetics in diverse retail settings and online.",
+    "caveat": "Geographic UK case study, not Asia prevalence.",
+    "sources": "S20;S29"
+  },
+  {
+    "id": "T18",
+    "era": "Current market",
+    "date": "2026 estimate",
+    "place": "Global / India",
+    "headline": "Two different market measures",
+    "body": "Global skin-lightening forecast: US$13.2bn; entire India skincare estimate: US$2.98bn. These are not comparable categories.",
+    "caveat": "Both figures from commercial firms; 2026 global forecast not observed revenue.",
+    "sources": "S13;S14"
+  }
+]

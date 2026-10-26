@@ -1,0 +1,15 @@
+﻿claim,assessment,reason,website_treatment,sources
+Consumer demand is inelastic,Not established,"No elasticity estimate in sources. Treat as a hypothesis, not exhibition fact.",Further economic demand research needed,S13
+Consumers sacrifice nutrition/healthcare for sachets,Not established,A strong causal and household-budget claim; no reliable documented dataset supplied.,Exclude until independently supported,
+Fair skin reduces dowry obligations,Not established,"Matrimonial preference is documented, but dowry pricing claim needs specific econometric evidence.",Remove universal dowry claim,S11;S12
+Lighter skin universally improves hiring in India,Contradicted as universal claim,2022 experiment found no statistically significant preference in its context.,Distinguish ad rhetoric from observed employment outcomes,S10
+All glow/brightening products are whitening creams,Overbroad,Brightening for pigmentation is not always changing natural complexion; formulas vary.,Separate medically relevant care from social fairness claims,S09;S16
+Rebranding preserves identical formulations,Not established / challenged by HUL,HUL says its formulation has evolved.,Say marketing names shifted; do not allege chemical identity without formulation comparisons,S09
+Global skin-lightening market is US$13.2bn in 2026,Forecast only,"Grand View Research forecasts 2026 revenue, not audited observed sales.","Label forecast, source and category",S13
+India skincare market is US$2.98bn in 2026,Industry estimate,India ALL-skincare figure includes sunscreen/moisturizers.,Never relabel as skin-lightening revenues,S14
+85% of India skincare is whitening,False reading of market report,"Report says about 85% is facial care, not fairness products.",Correct chart labels,S14
+Mercury can damage kidneys and nervous system,Supported,WHO describes toxic effects of mercury-containing skin-lightening products.,Use with product-specific caveat,S15
+All skin-lightening products contain mercury,Incorrect,Some illegal products contain mercury; no basis for universal claim.,Avoid blanket toxicology statement,S15;S16
+US hydroquinone OTC status applies everywhere,Incorrect,US FDA and UK cosmetics rules differ from medical access in different countries.,Name jurisdiction when discussing legality,S16;S22
+Slogan “White makes you win” was used in Thailand,Supported,"Documented 2016 campaign by Seoul Secret Snowz, then withdrawn.",Credit historical ad and source,S21
+The seven colours existed as a historical sample card,Incorrect,The names are documented in 2017; exact HEX codes created by artist.,Explain distinction publicly,S01;S23

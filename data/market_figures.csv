@@ -1,0 +1,7 @@
+﻿id,measure,year,value,unit,evidence_type,source,definition,source_ids
+M01,Global skin-lightening products market,2023,11.2,USD billions,historical estimate,Grand View Research,"global, broadly defined category including dark-spot/pigmentation products",S13
+M02,Global skin-lightening products market,2026,13.2,USD billions,"forecast, not observed",Grand View Research,same category and model as M01,S13
+M03,Global skin-lightening products market,2030,16.1,USD billions,forecast,Grand View Research,same category and model as M01,S13
+M04,Asia-Pacific share of global skin-lightening market,2023,54.8,percent,historical estimate,Grand View Research,"regional share of GVR global category, not share of all skincare",S13
+M05,India entire skincare market,2026,2.98,USD billions,industry estimate,Vyansa Intelligence,ALL skincare products; not skin-lightening revenue,S14
+M06,Facial care share of India skincare,2026,85,percent approximate,industry estimate,Vyansa Intelligence,"all facial care including moisturizers/sunscreens, not just whitening",S14

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1470" height="292" viewBox="0 0 1470 292" role="img" aria-labelledby="title desc">
+<title id="title">A Suitable Complexion: seven fixed colour chips</title><desc id="desc">Seven equal rectangular chips numbered 01 to 07 from artist-selected Very Fair through Dark; these are not scientific categories.</desc>
+<rect width="1470" height="292" fill="#F7F2E8"/><text x="40" y="55" fill="#262423" font-size="30" font-family="Arial, sans-serif" letter-spacing="6">COMPLEXION KEY</text><text x="40" y="88" fill="#5B544B" font-size="16" font-family="Arial, sans-serif">A deliberately invented visual reconstruction, not a skin-tone measurement</text>
+<rect x="40" y="115" width="180" height="85" fill="#F0D5BC" stroke="#362922" stroke-width="1.4"/>
+<text x="130" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">01</text>
+<text x="130" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Very Fair</text>
+<rect x="244" y="115" width="180" height="85" fill="#DDB58F" stroke="#362922" stroke-width="1.4"/>
+<text x="334" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">02</text>
+<text x="334" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Fair</text>
+<rect x="448" y="115" width="180" height="85" fill="#C99870" stroke="#362922" stroke-width="1.4"/>
+<text x="538" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">03</text>
+<text x="538" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Wheatish</text>
+<rect x="652" y="115" width="180" height="85" fill="#AC7953" stroke="#362922" stroke-width="1.4"/>
+<text x="742" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">04</text>
+<text x="742" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Wheatish Medium</text>
+<rect x="856" y="115" width="180" height="85" fill="#926143" stroke="#362922" stroke-width="1.4"/>
+<text x="946" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">05</text>
+<text x="946" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Wheatish Brown</text>
+<rect x="1060" y="115" width="180" height="85" fill="#70482F" stroke="#362922" stroke-width="1.4"/>
+<text x="1150" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">06</text>
+<text x="1150" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Wheatish Dark</text>
+<rect x="1264" y="115" width="180" height="85" fill="#4B3025" stroke="#362922" stroke-width="1.4"/>
+<text x="1354" y="230" text-anchor="middle" fill="#262423" font-size="21" font-family="Arial, sans-serif">07</text>
+<text x="1354" y="255" text-anchor="middle" fill="#514840" font-size="16" font-family="Arial, sans-serif">Dark</text>
+</svg>
