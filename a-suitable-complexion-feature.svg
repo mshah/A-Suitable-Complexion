@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 770" role="img" aria-labelledby="t d">
+<title id="t">A Suitable Complexion — exhibition feature image</title>
+<desc id="d">Cream-coloured typographic design, an unpainted outlined face marked 03 and the fixed seven-colour scale. This is a concept visual, not a family portrait.</desc>
+<rect width="1200" height="770" fill="#eee5d6"/>
+<path d="M30 0V770M1170 0V770" stroke="#c7b8a3"/>
+<text x="65" y="74" fill="#96674c" font-family="monospace" font-size="17" letter-spacing="3">A-THRICE / DIGITAL EXHIBITION</text>
+<text x="64" y="263" fill="#30271f" font-family="Georgia,serif" font-size="102" letter-spacing="-6">A Suitable</text>
+<text x="64" y="360" fill="#30271f" font-family="Georgia,serif" font-style="italic" font-size="108" letter-spacing="-7">Complexion</text>
+<text x="68" y="416" fill="#995b40" font-family="monospace" font-size="19">THE COMMERCIALIZATION OF INEQUALITY</text>
+<g transform="translate(715,94)" fill="none" stroke="#44372c" stroke-width="3">
+<path d="M95 515V353Q97 329 150 302L169 261Q146 220 151 159Q153 80 229 70Q302 74 308 169Q308 219 279 261L296 302Q344 328 356 352V515"/>
+<path d="M146 166Q134 105 166 90Q168 40 231 35Q311 29 327 124"/>
+<path d="M175 180Q191 166 215 177M259 177Q273 168 294 177M240 183L232 211L248 215M214 234Q231 244 254 233"/>
+<path d="M171 261Q224 294 289 263"/>
+</g>
+<text x="947" y="251" fill="#965737" font-family="monospace" text-anchor="middle" font-size="33" letter-spacing="2">03</text>
+<rect x="64" y="642" width="1072" height="77" fill="#e6dac9" stroke="#30271f" stroke-width="1"/>
+<g font-family="monospace" font-size="16" text-anchor="middle">
+<rect x="71" y="648" width="151" height="65" fill="#F0D5BC"/><rect x="223" y="648" width="151" height="65" fill="#DDB58F"/>
+<rect x="375" y="648" width="151" height="65" fill="#C99870"/><rect x="527" y="648" width="151" height="65" fill="#AC7953"/>
+<rect x="679" y="648" width="151" height="65" fill="#926143"/><rect x="831" y="648" width="151" height="65" fill="#70482F"/>
+<rect x="983" y="648" width="146" height="65" fill="#4B3025"/>
+<text x="147" y="691" fill="#30271f">01</text><text x="299" y="691" fill="#30271f">02</text><text x="451" y="691" fill="#30271f">03</text>
+<text x="603" y="691" fill="#ffffff">04</text><text x="755" y="691" fill="#ffffff">05</text><text x="907" y="691" fill="#ffffff">06</text><text x="1056" y="691" fill="#ffffff">07</text>
+</g>
+<text x="65" y="610" fill="#6d5e50" font-family="monospace" font-size="15">ARTIST'S COMPOSITE DIAGRAM / NO FAMILY PHOTOGRAPHS</text>
+</svg>
