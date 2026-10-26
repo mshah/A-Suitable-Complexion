@@ -51,7 +51,7 @@ Then visit `http://localhost:8080/` in your browser.
 - Artist-supplied market-size and commercial-promise infographics embedded on the commerce page, a separate India all-skincare fact box, and ingredient risk panels.
 - Original historical advertising scans displayed from Wellcome IIIF where available, with record links and image-credit notes. These images are **remote**, not embedded in the ZIP. Their links are not substitutes for archival rights and availability checks before launch.
 - Only the two selected A-Thrice quotations: `3 Migrations Deep` and `Faceprint`. Both come from the Google Drive lyrics documents; verify against released recordings when finalising credits.
-- Privacy-respecting gallery placeholders for artwork selections. **No family photographs or partially corrected image studies are included.**
+- Six artist-supplied, provisional family painting studies shown in the gallery for private review; they are not final or cleared for public release.
 - Responsive mobile navigation, keyboard-accessible buttons, meaningful alt text and support for reduced motion.
 - Site subdirectory works as a stand-alone static section, so it should integrate with the existing static A-Thrice portfolio.
 
@@ -59,7 +59,7 @@ Then visit `http://localhost:8080/` in your browser.
 
 - Select and QC approved images against `A_Suitable_Complexion_Concept_and_Image_Rules.docx`: all exposed skin of each filled person in one exact flat HEX; all skin of unfilled people warm ivory and numbered; clothing coloured; consistent full seven-chip legend.
 - Review consent/permission, especially for living relatives and minors; decide which names and dates may appear.
-- Replace gallery placeholders (edit `gallery.html` or contact for a small gallery data manifest generator); add captions, alt text and image credits.
+- Replace the six provisional artworks before publication; see `assets/artworks/README.md` and `data/gallery_studies_v3.csv`. Approve individual images, captions and image credits.
 - Check first-person artist statement: presently based on the working brief and labeled draft.
 - Confirm image-specific reuse conditions and, ideally, download the Wellcome source images under their CC licences for a stable production build. Indian advertisements from The Hindu, Afghan Snow and Fair & Lovely are *not* reproduced because rights are unresolved.
 - Validate external citations, market estimates and safety information at launch; the research registry includes caution/qualification columns.
@@ -72,7 +72,7 @@ This deliverable is a static website folder, not a hosted password-protected sta
 ## Contents
 
 - `index.html` — entrance and central thesis
-- `gallery.html` — private gallery slots + interactive complexion key
+- `gallery.html` — six provisional painting studies + interactive complexion key
 - `timeline.html` — 18-point interactive chronology
 - `intimacy-and-commerce.html` — economics and essay
 - `timeline.html#advertising-archive` — inline original archival advertisements / licensing notes; `archive.html` redirects old bookmarks
@@ -88,7 +88,7 @@ This deliverable is a static website folder, not a hosted password-protected sta
 - `a-suitable-complexion-feature.svg` — exhibition card preview asset
 
 
-## V2 revisions for local review
+## V2 research and design revisions carried into V3
 
 - The original advertising archive has moved **onto `timeline.html` below “The history is not a single origin story”**, and `archive.html` redirects there for compatibility.
 - *Intimacy & Commerce* now embeds the two artist-supplied preferred infographics (full-size originals under `assets/figures/`) in place of the earlier visualisations. Larger editorial pull quote on the essay's desktop side column.
@@ -96,4 +96,10 @@ This deliverable is a static website folder, not a hosted password-protected sta
 - The GlutaMAX **portrait** version was chosen because it preserves the campaign copy and product image at the highest supplied resolution.
 - An interactive colour palette was **already functional** in `gallery.html#key` and is more clearly signposted in this version; it uses only native HTML, CSS and `site.js` (no libraries).
 - Third-party ad copyrights have not been cleared for public distribution. The present package is a private-review build; do not merge to an auto-deploying public branch until rights and artwork permissions are checked.
+
+## V3 gallery update
+
+- The six artist-supplied provisional painting studies now appear in the requested order on the gallery page, with a full-size, keyboard-accessible viewer.
+- All six source PNGs are preserved unchanged; optimized WEBP previews improve browsing performance.
+- See `REVIEW_V3.md`, `data/gallery_studies_v3.csv` and `assets/artworks/README.md` for exact file assignments and replacing images.
 - The supplied Wellcome URL is remotely loaded: internet is required to see that particular image. The additional three Wellcome scans on the timeline are also remote.

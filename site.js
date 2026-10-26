@@ -25,4 +25,29 @@ career:['A better chance at work','Advertisements have linked complexion to prof
 confidence:['An improved self','The suggestion that a complexion must change before confidence can begin places responsibility on the individual, not the social environment.','An item of skincare plus an aspirational narrative.','The expectation that darker skin is a defect to correct.'],
 belonging:['An invitation to belong','The implication is that changing appearance helps a person fit the group. The work questions why membership would have conditions at all.','Products and an image of acceptance.','Who sets the terms of acceptance—and who benefits.']};
 const opts=[...document.querySelectorAll('.promise-option')];opts.forEach(b=>b.addEventListener('click',()=>{opts.forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});const p=promises[b.dataset.promise];document.getElementById('promiseHeadline').textContent=p[0];document.getElementById('promiseExplain').textContent=p[1];document.getElementById('promiseProduct').textContent=p[2];document.getElementById('promiseUnderlying').textContent=p[3]}));
+
+// Accessible, dependency-free artwork viewer. Normal image links remain usable when scripts are disabled.
+const artworkDialog=document.getElementById('artworkDialog');
+const artworkLinks=[...document.querySelectorAll('.artwork-open')];
+if(artworkDialog && artworkLinks.length && typeof artworkDialog.showModal==='function'){
+  const viewerImage=document.getElementById('artworkDialogImage');
+  const viewerTitle=document.getElementById('artworkDialogTitle');
+  const viewerStatus=document.getElementById('artworkDialogStatus');
+  let artworkIndex=0;
+  function showArtwork(n){
+    artworkIndex=(n+artworkLinks.length)%artworkLinks.length;
+    const a=artworkLinks[artworkIndex];
+    viewerImage.src=a.dataset.full;
+    viewerImage.alt=a.dataset.alt;
+    viewerTitle.textContent=a.dataset.title;
+    viewerStatus.textContent=String(artworkIndex+1).padStart(2,'0')+' of '+String(artworkLinks.length).padStart(2,'0')+' · Working study, not final';
+  }
+  artworkLinks.forEach((a,i)=>a.addEventListener('click',event=>{event.preventDefault();showArtwork(i);artworkDialog.showModal()}));
+  document.getElementById('artworkDialogClose').addEventListener('click',()=>artworkDialog.close());
+  document.getElementById('artworkDialogPrev').addEventListener('click',()=>showArtwork(artworkIndex-1));
+  document.getElementById('artworkDialogNext').addEventListener('click',()=>showArtwork(artworkIndex+1));
+  artworkDialog.addEventListener('click',event=>{if(event.target===artworkDialog)artworkDialog.close()});
+  artworkDialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();showArtwork(artworkIndex-1)}if(event.key==='ArrowRight'){event.preventDefault();showArtwork(artworkIndex+1)}});
+  artworkDialog.addEventListener('close',()=>{viewerImage.removeAttribute('src')});
+}
 })();
