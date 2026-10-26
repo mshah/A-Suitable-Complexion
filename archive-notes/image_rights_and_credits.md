@@ -23,3 +23,15 @@ A c.1909 British Hazeline leaflet is evidence of whitening claims in the early i
 ## Consent and metadata rule
 
 Private family photographs supplied for production are **not** bundled in this public editorial export. Their original and transformed versions require image-specific approval from the artist and appropriate subjects, especially for children. Archive IDs and non-identifying captions should be stored separately from private names, complexion assignments and unredacted source files.
+
+
+## Private-review evidence images added 26 October 2026
+
+- **Seoul Secret Snowz**: `assets/adverts/seoul-secret-2016-guardian-screenshot.png`, user-supplied screenshot of a Guardian-hosted campaign clip, linked to Guardian original coverage from 2016. Third-party rights **not cleared**. Display as commentary/evidence only in private review. Do not assume the Guardian owns the underlying campaign rights.
+- **Hazeline Snow**, L0032211: `https://iiif.wellcomecollection.org/image/L0032211/full/300,/0/default.jpg`. Remotely embedded original Wellcome archival image. *It is not the same item as the ad whose wording was “Gives Natural Charm”*, so caption must say related-brand example. Wellcome Collection and linked catalogue; confirm CC BY on the item.
+- **GlutaMAX**: `assets/adverts/glutamax-ebony-ivory-ad.png`, user-supplied 463 × 600 advertising scan (chosen for legibility over alternate horizontal reproduction). Third-party rights **not cleared**.
+- **Glow & Lovely**: `assets/adverts/glow-lovely-ad.png`, user-supplied brand campaign visual. Third-party rights **not cleared**.
+- **Market infographic**: `assets/figures/how-large-is-the-market-preferred.png`, supplied by the artist. Conceptual commercial-market estimate labels are retained in the figure.
+- **Promise machine infographic**: `assets/figures/promise-machine-preferred.png`, supplied by the artist. Interpretative model, not empirical causal claim.
+
+For any public launch, assess UK copyright exceptions for criticism/review or obtain consent/licence. Attributions and links are supplied but do not replace a reuse right.

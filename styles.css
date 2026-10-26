@@ -6,3 +6,67 @@
 /* The original archive scan is a remote image: always show an informative fallback beneath it. */
 .archive-image{position:relative}.archive-image .img-fallback{display:flex!important;position:absolute;inset:0;z-index:0;padding:20px}.archive-image img{position:relative;z-index:1;background:#ddd0b8}
 .archive-image img{background:transparent!important}
+
+
+/* Review v2 · embedded history archive / supplied figures / evidence imagery */
+html{scroll-padding-top:130px}
+.embedded-archive{padding-top:105px;padding-bottom:80px;border-top:1px solid var(--line)}
+.embedded-archive-intro{margin:0 0 35px;max-width:800px}
+.embedded-archive-intro h2{font:clamp(46px,6vw,82px)/1 var(--display);margin:16px 0 18px}
+.embedded-archive-intro h2 em{color:var(--accent)}
+.embedded-archive-intro p{max-width:700px}
+.embedded-archive-notes{padding-top:55px;padding-bottom:100px;border-top:1px solid var(--line)}
+.embedded-archive .archive-grid{margin-top:30px}
+.infographics-section{padding-top:54px;padding-bottom:42px}
+.infographics-section + .infographics-section{padding-top:30px}
+.editorial-infographic{margin:18px 0 0}
+.editorial-infographic>a{display:block;border:1px solid #d8cbbb;background:#f5f0e7;overflow:hidden;line-height:0;transition:box-shadow .2s}
+.editorial-infographic>a:hover,.editorial-infographic>a:focus-visible{box-shadow:0 0 0 3px #bca28e}
+.editorial-infographic img{width:100%;height:auto;display:block;object-fit:contain}
+.editorial-infographic figcaption{font:12px/1.65 var(--sans);color:var(--muted);margin:13px 4px 0;max-width:1000px}
+.graphic-hint{font:11px var(--mono);color:var(--accent);margin-left:10px;white-space:nowrap}
+.page-intimacy-and-commerce .reading-section{padding-top:95px}
+.article-aside .aside-sticky{border-top:2px solid var(--accent);gap:0;padding-top:25px}
+.side-pullquote{font:clamp(28px,2.75vw,43px)/1.13 var(--display);color:var(--ink);letter-spacing:-.02em;margin:25px 0 18px;quotes:none}
+.side-pullquote em{color:var(--accent)}
+.side-pullquote-follow{font:15px/1.6 var(--sans);color:var(--muted);margin:0 0 28px}
+.aside-resources{display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--line);padding-top:19px}
+.aside-resources .eyebrow{font-size:10px;margin-bottom:5px}
+.aside-resources a{font-size:11px;line-height:1.6}
+.slogan-row-visual{grid-template-columns:55px minmax(0,1fr) 142px;align-items:start;gap:24px;padding:35px 0 42px}
+.slogan-row-visual .evidence-content{min-width:0}
+.slogan-row-visual .evidence-content strong{font-size:clamp(29px,3vw,42px);line-height:1.1}
+.evidence-figure{margin:25px 0 0;max-width:750px}
+.evidence-image-wrap{background:#e6ddce;min-height:150px;display:flex;align-items:center;justify-content:center;border:1px solid #cfbda9;padding:18px;overflow:hidden}
+.evidence-image-wrap img{max-width:100%;height:auto;max-height:460px;object-fit:contain;display:block}
+.evidence-historic .evidence-image-wrap img{max-height:395px}
+.evidence-portrait .evidence-image-wrap img{max-height:495px}
+.evidence-figure figcaption{font:11.5px/1.7 var(--sans);color:var(--muted);margin-top:10px;max-width:700px}
+.evidence-source-link{font:11px/1.6 var(--mono)!important;align-self:start!important;padding-top:12px}
+.evidence-image-fallback{color:var(--muted);padding:20px;text-align:center}
+.evidence-rights-note{max-width:900px;margin-top:25px}
+.interactive-note{font:10px var(--mono);letter-spacing:.08em;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:25px}
+.interactive-pulse{width:9px;height:9px;border-radius:100%;background:var(--accent);box-shadow:0 0 0 5px #aa6f4a22}
+@media(max-width:900px){
+ .slogan-row-visual{grid-template-columns:38px minmax(0,1fr);gap:14px}
+ .slogan-row-visual .evidence-source-link{grid-column:2;justify-self:start;padding-top:0}
+ .article-aside .aside-sticky{position:static;max-width:650px;margin:32px 0 0}
+ .side-pullquote{font-size:34px;max-width:610px}
+ .infographics-section{padding-top:40px;padding-bottom:20px}
+ .embedded-archive{padding-top:75px}
+}
+@media(max-width:600px){
+ .embedded-archive-intro h2{font-size:52px}
+ .slogan-row-visual{display:block;padding:24px 0 30px}
+ .slogan-row-visual>span{display:block;margin-bottom:11px}
+ .slogan-row-visual .evidence-source-link{display:inline-block;margin-top:12px}
+ .evidence-figure{margin-top:20px}
+ .evidence-image-wrap{padding:9px;min-height:100px}
+ .evidence-image-wrap img{max-height:360px}
+ .editorial-infographic>a{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-color:#ae886d #e9dfd1}
+ .editorial-infographic img{width:max(100%,680px);max-width:none;height:auto}
+ .graphic-hint{display:block;margin:5px 0 0}
+ .embedded-archive-notes{padding-bottom:75px}
+ .side-pullquote{font-size:33px}
+}
+@media (prefers-reduced-motion:reduce){.editorial-infographic>a{transition:none}}

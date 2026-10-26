@@ -35,7 +35,7 @@
 
 ## How to run the review locally
 
-The site is designed to open by double-clicking `index.html`; all HTML/CSS/JS for interaction is local. Fonts and three Wellcome Collection archival images are externally hosted, so those particular assets require internet access. You can also serve the folder using:
+The site is designed to open by double-clicking `index.html`; all HTML/CSS/JS for interaction is local. Fonts and four Wellcome Collection archival images are externally hosted, so those particular assets require internet access. You can also serve the folder using:
 
 ```bash
 python3 -m http.server 8080
@@ -45,10 +45,10 @@ Then visit `http://localhost:8080/` in your browser.
 
 ## What has been implemented
 
-- 11 complete HTML pages, including the curatorial essay, full *Intimacy & Commerce* piece, chronology, advertising archive, artist statement, method/ethics, health risks and bibliography.
+- 10 complete content pages + 1 legacy archive redirect (11 HTML files), including the curatorial essay, full *Intimacy & Commerce* piece, chronology, advertising archive, artist statement, method/ethics, health risks and bibliography.
 - Interactive complexion key with seven exact palette swatches and filled/unfilled states, using an abstract specimen rather than a person's face.
 - Searchable-by-era timeline filters, documented slogans carousel, and an interactive promises/explanations module.
-- Custom market visualisation with accurately differentiated historical estimate and forecasts, a separate India all-skincare fact box, a conceptual profit-cycle visualisation, and ingredient risk panels.
+- Artist-supplied market-size and commercial-promise infographics embedded on the commerce page, a separate India all-skincare fact box, and ingredient risk panels.
 - Original historical advertising scans displayed from Wellcome IIIF where available, with record links and image-credit notes. These images are **remote**, not embedded in the ZIP. Their links are not substitutes for archival rights and availability checks before launch.
 - Only the two selected A-Thrice quotations: `3 Migrations Deep` and `Faceprint`. Both come from the Google Drive lyrics documents; verify against released recordings when finalising credits.
 - Privacy-respecting gallery placeholders for artwork selections. **No family photographs or partially corrected image studies are included.**
@@ -75,7 +75,7 @@ This deliverable is a static website folder, not a hosted password-protected sta
 - `gallery.html` — private gallery slots + interactive complexion key
 - `timeline.html` — 18-point interactive chronology
 - `intimacy-and-commerce.html` — economics and essay
-- `archive.html` — original archival advertisements / licensing notes
+- `timeline.html#advertising-archive` — inline original archival advertisements / licensing notes; `archive.html` redirects old bookmarks
 - `promise-machine.html` — slogans / typographic display / interactions
 - `price-of-fairness.html` — medical and regulatory distinctions
 - `curatorial-essay.html` — essay on classification
@@ -86,3 +86,14 @@ This deliverable is a static website folder, not a hosted password-protected sta
 - `data/`, `editorial/`, `archive-notes/` — editable source records, writing and rights notes
 - `assets/figures/` — source SVG figures
 - `a-suitable-complexion-feature.svg` — exhibition card preview asset
+
+
+## V2 revisions for local review
+
+- The original advertising archive has moved **onto `timeline.html` below “The history is not a single origin story”**, and `archive.html` redirects there for compatibility.
+- *Intimacy & Commerce* now embeds the two artist-supplied preferred infographics (full-size originals under `assets/figures/`) in place of the earlier visualisations. Larger editorial pull quote on the essay's desktop side column.
+- *The Promise Machine* now includes user-supplied Seoul Secret, GlutaMAX and Glow & Lovely evidence images, plus the requested Wellcome Hazeline Snow IIIF image under each respective statement.
+- The GlutaMAX **portrait** version was chosen because it preserves the campaign copy and product image at the highest supplied resolution.
+- An interactive colour palette was **already functional** in `gallery.html#key` and is more clearly signposted in this version; it uses only native HTML, CSS and `site.js` (no libraries).
+- Third-party ad copyrights have not been cleared for public distribution. The present package is a private-review build; do not merge to an auto-deploying public branch until rights and artwork permissions are checked.
+- The supplied Wellcome URL is remotely loaded: internet is required to see that particular image. The additional three Wellcome scans on the timeline are also remote.
