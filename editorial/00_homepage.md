@@ -10,7 +10,7 @@ status: ready-for-editorial-review
 
 **Family photographs. Seven shades. A system of judgment.**
 
-At weddings, on beaches, in living rooms, people gather to be remembered. The photographs preserve affection, jokes, awkward poses, clothing chosen for an occasion, and the simple fact of being together. In *A Suitable Complexion*, those photographs are interrupted by a colour chart.
+At weddings, people dress to be seen and remembered. Every photograph in the series comes from a wedding gathering, where embroidered saris, lehengas, sherwanis, and jewellery communicate personal choice and cultural expression. In *A Suitable Complexion*, these richly individual images are interrupted by a standardized complexion chart.
 
 Every person receives one of seven complexion categories. Some areas of skin are filled in a single flat colour; other people's skin is left unpainted, marked only by a number. Their expressions, clothing and relationships remain.
 

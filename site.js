@@ -40,7 +40,7 @@ if(artworkDialog && artworkLinks.length && typeof artworkDialog.showModal==='fun
     viewerImage.src=a.dataset.full;
     viewerImage.alt=a.dataset.alt;
     viewerTitle.textContent=a.dataset.title;
-    viewerStatus.textContent=String(artworkIndex+1).padStart(2,'0')+' of '+String(artworkLinks.length).padStart(2,'0')+' · Working study, not final';
+    viewerStatus.textContent=String(artworkIndex+1).padStart(2,'0')+' of '+String(artworkLinks.length).padStart(2,'0')+' · '+(a.dataset.status||'Artwork for private review');
   }
   artworkLinks.forEach((a,i)=>a.addEventListener('click',event=>{event.preventDefault();showArtwork(i);artworkDialog.showModal()}));
   document.getElementById('artworkDialogClose').addEventListener('click',()=>artworkDialog.close());

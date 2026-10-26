@@ -14,7 +14,7 @@
   <a class="exhibit-image" href="exhibitions/a-suitable-complexion/index.html"
      aria-label="Enter A Suitable Complexion">
     <img src="assets/a-suitable-complexion-feature.svg"
-         alt="A Suitable Complexion conceptual diagram and seven-colour key"
+         alt="A Suitable Complexion family wedding painting study and seven-colour complexion key"
          loading="lazy" />
     <span class="exhibit-number">EXHIBITION 03 / DIGITAL EXHIBITION</span>
   </a>
@@ -51,7 +51,7 @@ Then visit `http://localhost:8080/` in your browser.
 - Artist-supplied market-size and commercial-promise infographics embedded on the commerce page, a separate India all-skincare fact box, and ingredient risk panels.
 - Original historical advertising scans displayed from Wellcome IIIF where available, with record links and image-credit notes. These images are **remote**, not embedded in the ZIP. Their links are not substitutes for archival rights and availability checks before launch.
 - Only the two selected A-Thrice quotations: `3 Migrations Deep` and `Faceprint`. Both come from the Google Drive lyrics documents; verify against released recordings when finalising credits.
-- Six artist-supplied, provisional family painting studies shown in the gallery for private review; they are not final or cleared for public release.
+- Seventeen wedding painting candidates shown for private review: five working studies and twelve artist-selected final images, including three proposed reserves; publication clearance remains outstanding.
 - Responsive mobile navigation, keyboard-accessible buttons, meaningful alt text and support for reduced motion.
 - Site subdirectory works as a stand-alone static section, so it should integrate with the existing static A-Thrice portfolio.
 
@@ -59,7 +59,7 @@ Then visit `http://localhost:8080/` in your browser.
 
 - Select and QC approved images against `A_Suitable_Complexion_Concept_and_Image_Rules.docx`: all exposed skin of each filled person in one exact flat HEX; all skin of unfilled people warm ivory and numbered; clothing coloured; consistent full seven-chip legend.
 - Review consent/permission, especially for living relatives and minors; decide which names and dates may appear.
-- Replace the six provisional artworks before publication; see `assets/artworks/README.md` and `data/gallery_studies_v3.csv`. Approve individual images, captions and image credits.
+- Replace or approve the five remaining studies and check publication rights for all seventeen candidate works; see `assets/artworks/README.md` and `data/curatorial_inventory_v6.csv`. Approve individual images, captions and image credits.
 - Check first-person artist statement: presently based on the working brief and labeled draft.
 - Confirm image-specific reuse conditions and, ideally, download the Wellcome source images under their CC licences for a stable production build. Indian advertisements from The Hindu, Afghan Snow and Fair & Lovely are *not* reproduced because rights are unresolved.
 - Validate external citations, market estimates and safety information at launch; the research registry includes caution/qualification columns.
@@ -72,7 +72,7 @@ This deliverable is a static website folder, not a hosted password-protected sta
 ## Contents
 
 - `index.html` — entrance and central thesis
-- `gallery.html` — six provisional painting studies + interactive complexion key
+- `gallery.html` — seventeen wedding candidates in three proposed acts (five studies, twelve selected finals) + interactive complexion key
 - `timeline.html` — 18-point interactive chronology
 - `intimacy-and-commerce.html` — economics and essay
 - `timeline.html#advertising-archive` — inline original archival advertisements / licensing notes; `archive.html` redirects old bookmarks
@@ -88,7 +88,7 @@ This deliverable is a static website folder, not a hosted password-protected sta
 - `a-suitable-complexion-feature.svg` — exhibition card preview asset
 
 
-## V2 research and design revisions carried into V3
+## V2 research and design revisions carried into V4
 
 - The original advertising archive has moved **onto `timeline.html` below “The history is not a single origin story”**, and `archive.html` redirects there for compatibility.
 - *Intimacy & Commerce* now embeds the two artist-supplied preferred infographics (full-size originals under `assets/figures/`) in place of the earlier visualisations. Larger editorial pull quote on the essay's desktop side column.
@@ -97,9 +97,20 @@ This deliverable is a static website folder, not a hosted password-protected sta
 - An interactive colour palette was **already functional** in `gallery.html#key` and is more clearly signposted in this version; it uses only native HTML, CSS and `site.js` (no libraries).
 - Third-party ad copyrights have not been cleared for public distribution. The present package is a private-review build; do not merge to an auto-deploying public branch until rights and artwork permissions are checked.
 
-## V3 gallery update
+## V3 gallery update (historical note)
 
 - The six artist-supplied provisional painting studies now appear in the requested order on the gallery page, with a full-size, keyboard-accessible viewer.
 - All six source PNGs are preserved unchanged; optimized WEBP previews improve browsing performance.
 - See `REVIEW_V3.md`, `data/gallery_studies_v3.csv` and `assets/artworks/README.md` for exact file assignments and replacing images.
 - The supplied Wellcome URL is remotely loaded: internet is required to see that particular image. The additional three Wellcome scans on the timeline are also remote.
+
+## V4 gallery and homepage update
+
+- Five additional provisional images (07–11) follow the original six. No supplied artwork pixels were changed.
+- See `REVIEW_V4.md` and `data/gallery_studies_v4.csv` for the 11-work manifest.
+- The exhibition entry page now shows a wedding painting study in place of the "Subject Unknown" drawing, with no duplicate complexion key beneath it.
+- The updated `a-suitable-complexion-feature.svg` is also included for use as the parent site's feature image.
+- If you have edited the homepage locally, use the **gallery-only patch** instead of overwriting the complete installation directory.
+
+## Latest private proof V5
+Six original studies (01–06) plus five artist-selected final images (07–11); see `REVIEW_V5.md` and `data/gallery_studies_v5.csv`.

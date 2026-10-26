@@ -1,7 +1,9 @@
-# Provisional artworks — private review only
+# Exhibition gallery image manifest — V6 private curatorial review
 
-The six PNG files are unchanged copies of the artist-uploaded working images, in the requested order. The paired WEBP files are optimized gallery previews. The gallery opens the original PNG in a large on-page viewer.
+There are **17 candidate works**: **5 working studies** and **12 artist-selected final images**. The former *Home 06* beach portrait has been removed at the artist's request. This proof proposes **14 main works and 3 reserves**, not a final edit. All submitted painting masters remain unchanged. The three reserve originals remain in the package.
 
-To change a work without editing HTML, replace its PNG and regenerate the matching `-preview.webp` from the new image (same filename); or change the two paths in `gallery.html`. The key, titles and site are independent of these image files.
+The review gallery is in a proposed narrative sequence, with temporary `R01`–`R17` review identifiers. These are not final inventory numbers. Crosswalk to V5 references, filenames, source titles, statuses and selection recommendations is in `data/curatorial_inventory_v6.csv`.
 
-Do not treat these images as cleared for public distribution. Check individual likeness permissions, including for any children, and approve each final image before publishing.
+Each full-resolution PNG retains the artist-supplied pixels. Each image has a lighter WebP for browsing, with the full composition and seven-shade key kept intact. The viewer opens the original PNG.
+
+Artist's **final image selection is not the same as public release clearance or independent rule-compliance QC**. Public consent, particularly for minors, and verification of the complexion treatment remain necessary. See `REVIEW_V6.md` for specific observations.

@@ -8,7 +8,9 @@ status: ready-for-editorial-review
 
 # The Violence of a Neutral Chart
 
-*A Suitable Complexion* begins with photographs that were not taken to make an argument. They were taken because someone had married, because relatives had gathered, because a holiday offered an evening of good light, or simply because there was a camera and there were people who wished to remember one another. Their historical value lies in their specificity. A person's smile, a relative's hand on someone else's shoulder, a dress kept for a special occasion: these are fragments of lives that exceed any system of classification.
+*A Suitable Complexion* begins with photographs that were not taken to make an argument. They were all taken at weddings, whether during the ceremony or in the gatherings of family and friends that surround it. Their historical value lies in their specificity. A person's smile, a relative's hand on someone else's shoulder, a dress kept for a special occasion: these are fragments of lives that exceed any system of classification.
+
+The clothing is not incidental. It is lavishly embroidered, finely patterned, bright, joyful, and individual. Against these specific choices, the standardized skin becomes a flat swatch—or an unfilled white area with a number. The fabric celebrates the person; the chart classifies them.
 
 Then a chart is introduced.
 

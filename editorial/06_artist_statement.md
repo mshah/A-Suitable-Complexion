@@ -8,7 +8,7 @@ status: artist-voice-pending-approval
 
 # Artist Statement
 
-I began with photographs of my own family: weddings, celebrations, holidays and ordinary moments of being together. I wanted to look at the strange contrast between the richness of these relationships and the narrow categories used to describe complexions in Indian matrimonial culture.
+I began with photographs of my own family at weddings: not only ceremonies, but all the people gathering around them. I wanted to look at the strange contrast between the richness of these relationships and the narrow categories used to describe complexions in Indian matrimonial culture.
 
 I invented a rule. Everyone in the photograph receives one of seven colours, selected from a point at the middle of the nose. In some figures the skin is painted as a single flat field; in others it is left blank, with a number marking the colour that would be applied. Clothing, jewellery, faces and relationships remain recognisable. Every painting repeats the same chart.
 
