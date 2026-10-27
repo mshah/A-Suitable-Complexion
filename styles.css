@@ -221,3 +221,21 @@ html{scroll-padding-top:130px}
 @media(prefers-reduced-motion:reduce) { .mirror-chip { transition:none; } }
 
 .mirror-interaction-invite{border-left:3px solid #936449;padding:6px 0 6px 18px;margin-top:20px!important;font:clamp(17px,1.5vw,21px)/1.55 var(--display)!important;color:#6c4533}
+
+/* V10 interactive mirror enhancements */
+.mirror-canvas{position:absolute;inset:0;z-index:3;width:100%;height:100%;display:block;object-fit:cover;background:#f6eee2}
+.mirror-canvas[hidden]{display:none!important}
+.mirror-cycle-controls{grid-template-columns:1fr 1fr 1.8fr}
+#mirrorDecide{grid-column:1/-1;background:#8b5c43;color:#fff4eb;border-color:#8b5c43}
+#mirrorDecide:hover{background:#6c4533;color:#fff}
+.mirror-art--interactive.is-camera-live .mirror-assignment{backdrop-filter:blur(5px)}
+@media(max-width:600px){.mirror-cycle-controls{grid-template-columns:1fr 1fr}.mirror-cycle-controls #mirrorCycle{grid-column:1/-1}.mirror-cycle-controls #mirrorDecide{grid-column:1/-1}}
+
+/* V11, Stage 1: facial contour overlay on existing flat-colour mirror. */
+#mirrorFeatureLines{grid-column:1/-1;background:#efe4d6;border:1px solid #a28c72;color:#31271f}
+#mirrorFeatureLines[aria-pressed="true"]{background:#382b22;color:#f7efe5;border-color:#382b22}
+#mirrorFeatureLines:hover{filter:brightness(.92)}
+/* The old semi-transparent V9 wash must not recolour the newly painted canvas. */
+.mirror-art--interactive.is-camera-live .mirror-colorwash{display:none}
+.mirror-cycle-controls button:disabled{opacity:.6;cursor:progress}
+@media(max-width:600px){#mirrorFeatureLines{grid-column:1/-1}}
