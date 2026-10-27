@@ -1,4 +1,4 @@
-/* A Suitable Complexion, V11 — Stage 1 / Illustrated facial features.
+/* A Suitable Complexion, V11.1 — Stage 1 alignment correction.
    Camera processing stays entirely in the browser. We don't measure complexion,
    recognize visitors, save frames, or transmit camera images to any server.
    External MediaPipe code and pretrained model files load only after camera opt-in.
@@ -160,27 +160,47 @@
     return faceLoad;
   }
 
+  // Use one canonical, viewport-shaped image for preview AND both ML models.
+  // A camera can deliver landscape video even into our portrait-shaped mirror.
+  // V11 used different transformations for the video, landmarks, and mask;
+  // this crop-and-mirror is the SINGLE coordinate system for all three.
+  const viewport = root.querySelector('.mirror-viewport');
   function canvasSize() {
-    const width = video.videoWidth || 640;
-    const height = video.videoHeight || 480;
-    const factor = Math.min(1,640/Math.max(width,height));
-    const w = Math.max(1,Math.round(width*factor));
-    const h = Math.max(1,Math.round(height*factor));
+    const rect = viewport.getBoundingClientRect();
+    // Keep the backing canvas in precisely the same aspect ratio as the CSS mirror.
+    // At most ~480x640 physical pixels for responsive browser inference.
+    const displayW = Math.max(1, rect.width || viewport.clientWidth || 320);
+    const displayH = Math.max(1, rect.height || viewport.clientHeight || 420);
+    const scale = Math.min(1.5, 480/displayW, 640/displayH);
+    const w = Math.max(1, Math.round(displayW*scale));
+    const h = Math.max(1, Math.round(displayH*scale));
     if(canvas.width !== w || canvas.height !== h) {
-      canvas.width=sourceCanvas.width=w;
-      canvas.height=sourceCanvas.height=h;
+      canvas.width = sourceCanvas.width = w;
+      canvas.height = sourceCanvas.height = h;
     }
   }
   function mirroredPhoto() {
+    const w = sourceCanvas.width, h = sourceCanvas.height;
+    const vw = video.videoWidth || w, vh = video.videoHeight || h;
+    const sourceAspect = vw/vh, destinationAspect = w/h;
+    let sx = 0, sy = 0, sw = vw, sh = vh;
+    // Exactly replicate object-fit:cover, but INSIDE the image supplied to ML.
+    if (sourceAspect > destinationAspect) {
+      sw = vh * destinationAspect;
+      sx = (vw - sw)/2;
+    } else {
+      sh = vw / destinationAspect;
+      sy = (vh - sh)/2;
+    }
     sourceCtx.save();
-    sourceCtx.clearRect(0,0,sourceCanvas.width,sourceCanvas.height);
-    sourceCtx.translate(sourceCanvas.width,0);
+    sourceCtx.clearRect(0,0,w,h);
+    sourceCtx.translate(w,0);
     sourceCtx.scale(-1,1);
-    sourceCtx.drawImage(video,0,0,sourceCanvas.width,sourceCanvas.height);
+    sourceCtx.drawImage(video,sx,sy,sw,sh,0,0,w,h);
     sourceCtx.restore();
   }
   function drawTintFallback() {
-    mirroredPhoto();
+    // The canonical source image has already been drawn this frame.
     ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.drawImage(sourceCanvas,0,0);
     ctx.fillStyle=palette[index].color;
@@ -190,17 +210,16 @@
   }
   function paintSkin(mask) {
     if(!mask?.getAsUint8Array) {drawTintFallback();return;}
-    mirroredPhoto();
     const frame = sourceCtx.getImageData(0,0,sourceCanvas.width,sourceCanvas.height);
     const rgba=frame.data;
     const categories=mask.getAsUint8Array();
     const mw=mask.width,mh=mask.height;
     const w=canvas.width,h=canvas.height;
     const [r,g,b]=rgb(palette[index].color);
-    // IMPORTANT: sourceCanvas/video is mirrored, but the segmentation mask isn't.
-    // Flip x when sampling mask: fixes misaligned fill around eyes and cheeks.
+    // The mask comes from the SAME already-mirrored sourceCanvas pixels.
+    // Do not flip, crop, translate or mirror it a second time.
     const xs=new Uint16Array(w);
-    for(let x=0;x<w;x++) xs[x]=mw-1-Math.min(mw-1,Math.floor(x*mw/w));
+    for(let x=0;x<w;x++) xs[x]=Math.min(mw-1,Math.floor(x*mw/w));
     for(let y=0;y<h;y++){
       const sy=Math.min(mh-1,Math.floor(y*mh/h));
       const maskRow=sy*mw,rgbaRow=y*w*4;
@@ -213,11 +232,11 @@
     ctx.putImageData(frame,0,0);
   }
 
-  // Face Landmarker points describe the *unmirrored* input video.
-  // Convert to the mirrored preview's canvas coordinates.
+  // Face Landmarker ALSO analyzes the same mirrored sourceCanvas image.
+  // Normalized landmarks therefore already match the painted canvas coordinates.
   function point(landmarks,id){
     const p=landmarks[id];
-    return p ? {x:(1-p.x)*canvas.width,y:p.y*canvas.height} : null;
+    return p ? {x:p.x*canvas.width,y:p.y*canvas.height} : null;
   }
   function pathPoints(landmarks,ids,{close=false,scale=1}={}) {
     const pts=ids.map(i=>point(landmarks,i));
@@ -295,9 +314,11 @@
     lastVideoTime=video.currentTime;
     lastProcessedAt=now;
     canvasSize();
+    // Capture one identical, already-mirrored frame for display and inference.
+    mirroredPhoto();
     try {
       if(segmenter){
-        const result=segmenter.segmentForVideo(video,now);
+        const result=segmenter.segmentForVideo(sourceCanvas,now);
         if(result?.categoryMask){
           try {paintSkin(result.categoryMask)}
           finally {result.categoryMask.close?.()}
@@ -309,7 +330,7 @@
     }
     if(showLines&&faceLandmarker){
       try{
-        const result=faceLandmarker.detectForVideo(video,now);
+        const result=faceLandmarker.detectForVideo(sourceCanvas,now);
         const landmarks=result?.faceLandmarks?.[0];
         if(landmarks) drawIllustratedFeatures(landmarks);
       }catch(error){

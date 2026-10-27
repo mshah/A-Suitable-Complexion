@@ -239,3 +239,6 @@ html{scroll-padding-top:130px}
 .mirror-art--interactive.is-camera-live .mirror-colorwash{display:none}
 .mirror-cycle-controls button:disabled{opacity:.6;cursor:progress}
 @media(max-width:600px){#mirrorFeatureLines{grid-column:1/-1}}
+
+/* V11.1 alignment: the image input to both models has the viewport's exact aspect ratio. */
+.mirror-canvas{object-fit:fill!important; transform:none!important;}
