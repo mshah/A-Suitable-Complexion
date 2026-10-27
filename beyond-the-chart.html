@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
-<link href="styles.css?v=14-stage4" rel="stylesheet"/><script defer="" src="site.js"></script>
-<script defer="True" src="mirror.js?v=14-stage4"></script></head><body class="page-beyond-chart"><a class="skip" href="#main">Skip to content</a>
+<link href="styles.css?v=17-mobile-preview" rel="stylesheet"/><script defer="" src="site.js"></script>
+<script defer="True" src="mirror.js?v=17-mobile-preview"></script></head><body class="page-beyond-chart"><a class="skip" href="#main">Skip to content</a>
 <div class="review-bar">PRIVATE REVIEW · 16 SELECTED PAINTINGS · NOT FOR PUBLICATION</div>
 <header class="site-header"><div class="frame navrow"><a aria-label="A Suitable Complexion, exhibition home" class="brand" href="index.html"><span class="brand-emblem">A<br/>SC</span><span class="brand-title">A Suitable<br/><i>Complexion</i></span></a>
 <button aria-controls="navLinks" aria-expanded="false" class="menu-toggle" type="button">Explore <span aria-hidden="true">☰</span></button>
@@ -33,7 +33,7 @@
 <p>It is a question many of us encounter as children. In <em>Snow White</em>, the mirror is asked not simply to reflect a face, but to judge it. Beauty becomes a competition. Someone must be the fairest, and everyone else must fall somewhere below.</p>
 <p>The fairy tale belongs to a different cultural history from India's matrimonial complexion classifications. Yet both reveal a familiar impulse: to turn beauty into a hierarchy and to present that hierarchy as though it were natural.</p>
 <p>In matrimonial biodata, the mirror becomes a description: very fair, fair, wheatish, dark. In the beauty industry, it becomes a product recommendation. A person is shown an ideal and offered something to bring them closer to it.</p>
-<p class="mirror-interaction-invite">Try the mirror: assign yourself a number, then watch the same face acquire a different classification. Compare the illustrated features, then switch Simplified Portrait on and off to see how the camera image changes.</p></div>
+<p class="mirror-interaction-invite">Try the mirror: assign yourself a number, change it, and consider what has actually changed. More Flat and Gallery colour grading are selected, with optional switches for comparison.</p></div>
 <div class="mirror-art mirror-art--interactive" id="mirrorExperience">
 <div class="mirror-outline mirror-interactive-shell" id="mirrorFrame" style="--mirror-color:#C99870">
 <div class="mirror-inside mirror-interactive-inside">
@@ -73,13 +73,20 @@
 <button aria-label="Previous shade" id="mirrorPrevious" type="button">← <span>PREV</span></button>
 <button aria-label="Next shade" id="mirrorNext" type="button"><span>NEXT</span> →</button>
 <button aria-pressed="false" id="mirrorCycle" type="button">CYCLE THE LABELS ↻</button>
-<button id="mirrorDecide" type="button">LET THE MIRROR DECIDE ✦</button><button aria-pressed="true" id="mirrorFeatureLines" type="button">ILLUSTRATED FEATURES: ON</button><button aria-pressed="false" id="mirrorSimplify" type="button">SIMPLIFIED PORTRAIT: OFF</button><button aria-pressed="false" id="mirrorDetails" type="button">GARMENT &amp; HAIR DETAIL: OFF</button></div>
+<button id="mirrorDecide" type="button">LET THE MIRROR DECIDE ✦</button><button aria-pressed="true" id="mirrorFeatureLines" type="button">ILLUSTRATED FEATURES: ON</button><button aria-pressed="false" id="mirrorDetails" type="button">GARMENT &amp; HAIR DETAIL: OFF</button></div><div aria-label="Illustrated mirror finishing effects" class="mirror-mobile-presets" role="group">
+<p class="mirror-mobile-presets-heading">PORTRAIT FINISH <span>Mobile preview settings</span></p>
+<div class="mirror-mobile-preset-buttons">
+<button aria-pressed="true" class="mirror-mobile-preset-button" id="mirrorMoreFlat" type="button">MORE FLAT PORTRAIT: ON</button>
+<button aria-pressed="true" class="mirror-mobile-preset-button" id="mirrorGalleryGrade" type="button">GALLERY COLOUR GRADE: ON</button>
+</div>
+<p class="mirror-mobile-preset-hint">Both start ON. Switch either OFF to compare its effect. The seven complexion colours always stay the same.</p>
+</div>
 <div class="mirror-camera-controls">
 <button id="mirrorStartCamera" type="button">USE MY CAMERA</button>
 <button hidden="" id="mirrorStopCamera" type="button">TURN OFF CAMERA</button>
 </div>
-<p aria-live="polite" class="mirror-camera-status" id="mirrorStatus" role="status">Camera off. Choose a shade or let the mirror decide. Turn on your camera to compare Illustrated Features, Simplified Portrait, and Garment &amp; Hair Detail.</p>
-<p class="mirror-privacy">Camera access is optional. Video is processed in your browser only: no photos, recordings, uploads, facial identification or automatic complexion scoring. Illustrated Features draws facial outlines; Simplified Portrait reduces photographic texture. Garment &amp; Hair Detail selectively restores fabric, hair and accessory textures without changing assigned skin colours. The seven labels and Let the Mirror Decide remain deliberately arbitrary.</p>
+<p aria-live="polite" class="mirror-camera-status" id="mirrorStatus" role="status">Camera off. More Flat portrait and Gallery colour grade are ON. You can switch either off to compare.</p>
+<p class="mirror-privacy">Camera access is optional. Video is processed locally in your browser: no photographs, recordings, uploads, identity recognition or automatic complexion scoring. The exhibition colour grades adjust contrast and garment colour before skin is repainted; all seven complexion fills remain exact. The labels and Let the Mirror Decide are deliberately arbitrary.</p>
 </div>
 </div>
 </div>
