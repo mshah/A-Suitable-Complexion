@@ -242,3 +242,10 @@ html{scroll-padding-top:130px}
 
 /* V11.1 alignment: the image input to both models has the viewport's exact aspect ratio. */
 .mirror-canvas{object-fit:fill!important; transform:none!important;}
+
+/* V12, Stage 2: side-by-side-in-time comparison of original and simplified portrait. */
+#mirrorSimplify{grid-column:1/-1;background:#eee5d6;border:1px solid #a28c72;color:#31271f}
+#mirrorSimplify[aria-pressed="true"]{background:#8a573e;color:#fff8ef;border-color:#8a573e}
+#mirrorSimplify:hover{filter:brightness(.94)}
+#mirrorSimplify:focus-visible{outline:3px solid #b34729;outline-offset:3px}
+@media(max-width:600px){#mirrorSimplify{grid-column:1/-1}}

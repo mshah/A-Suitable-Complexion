@@ -1,4 +1,4 @@
-/* A Suitable Complexion, V11.1 — Stage 1 alignment correction.
+/* A Suitable Complexion, V12 — Stage 2 optional image simplification.
    Camera processing stays entirely in the browser. We don't measure complexion,
    recognize visitors, save frames, or transmit camera images to any server.
    External MediaPipe code and pretrained model files load only after camera opt-in.
@@ -31,20 +31,26 @@
   const cycle = $('#mirrorCycle');
   const decide = $('#mirrorDecide');
   const linesButton = $('#mirrorFeatureLines');
+  const simplifyButton = $('#mirrorSimplify');
   const start = $('#mirrorStartCamera');
   const stop = $('#mirrorStopCamera');
   const status = $('#mirrorStatus');
   const video = $('#mirrorVideo');
   const canvas = $('#mirrorCanvas');
   const offline = $('#mirrorOffline');
-  if (!canvas || !linesButton) return;
+  if (!canvas || !linesButton || !simplifyButton) return;
 
   const ctx = canvas.getContext('2d', { willReadFrequently:true });
   const sourceCanvas = document.createElement('canvas');
   const sourceCtx = sourceCanvas.getContext('2d', { willReadFrequently:true });
+  // This optional render-only layer NEVER feeds either ML model.
+  // Tracking always uses the same original, mirrored sourceCanvas as V11.1.
+  const stylizedCanvas = document.createElement('canvas');
+  const stylizedCtx = stylizedCanvas.getContext('2d', { willReadFrequently:true });
 
   let index = 2;
   let showLines = true;
+  let simplifyPortrait = false; // Default to the known-good V11.1 rendering.
   let cycleTimer = null;
   let decideTimer = null;
   let stream = null;
@@ -119,6 +125,18 @@
     if(stream) setStatus(showLines ? 'Illustrated contours enabled. Look straight at the mirror to track eyes, brows, nose, lips and jaw.' : 'Illustrated contours disabled. Comparing against the plain V10 flat fill.');
   });
 
+  simplifyButton.addEventListener('click', () => {
+    simplifyPortrait = !simplifyPortrait;
+    simplifyButton.setAttribute('aria-pressed', String(simplifyPortrait));
+    simplifyButton.textContent = 'SIMPLIFIED PORTRAIT: ' + (simplifyPortrait ? 'ON' : 'OFF');
+    if (stream) setStatus(simplifyPortrait
+      ? 'Simplified portrait enabled: gentle smoothing and posterized tones. Flat skin and illustrated facial lines remain unchanged.'
+      : 'Simplified portrait off: showing the original V11.1 illustrated reflection.');
+    else setStatus(simplifyPortrait
+      ? 'Simplified portrait enabled. Turn on your camera to compare the illustration treatments.'
+      : 'Simplified portrait disabled. Turn on your camera to see the original treatment.');
+  });
+
   async function fileset() {
     if(!visionFilesetLoad) visionFilesetLoad = (async()=>{
       const vision = await import(VISION_URL);
@@ -175,8 +193,8 @@
     const w = Math.max(1, Math.round(displayW*scale));
     const h = Math.max(1, Math.round(displayH*scale));
     if(canvas.width !== w || canvas.height !== h) {
-      canvas.width = sourceCanvas.width = w;
-      canvas.height = sourceCanvas.height = h;
+      canvas.width = sourceCanvas.width = stylizedCanvas.width = w;
+      canvas.height = sourceCanvas.height = stylizedCanvas.height = h;
     }
   }
   function mirroredPhoto() {
@@ -199,10 +217,47 @@
     sourceCtx.drawImage(video,sx,sy,sw,sh,0,0,w,h);
     sourceCtx.restore();
   }
+  // Stage 2: a deliberately restrained live illustration preparation.
+  // - Softens tiny webcam texture with a subpixel blur where supported.
+  // - Quantizes *luminance* into eight discrete tones, while leaving chroma
+  //   (the difference between RGB channels) alone: no saturation boost yet.
+  // - Keeps textile colour and much of its pattern detail for Stage 4.
+  // The original sourceCanvas is never modified, so ML coordinates remain stable.
+  // In a future stage we can tune these values from real-device test images.
+  const SIMPLIFY_LUMA_LEVELS = 8;
+  const SIMPLIFY_STRENGTH = 0.88;
+  const SIMPLIFY_BLUR_PX = 0.85;
+  function prepareSimplifiedPortrait() {
+    const w = sourceCanvas.width, h = sourceCanvas.height;
+    stylizedCtx.clearRect(0, 0, w, h);
+    // Opaque original underlay avoids transparent seams at the blur boundary.
+    stylizedCtx.drawImage(sourceCanvas, 0, 0);
+    stylizedCtx.save();
+    if ('filter' in stylizedCtx) stylizedCtx.filter = 'blur(' + SIMPLIFY_BLUR_PX + 'px)';
+    stylizedCtx.drawImage(sourceCanvas, 0, 0);
+    stylizedCtx.restore();
+    const image = stylizedCtx.getImageData(0, 0, w, h);
+    const pixels = image.data;
+    const step = 255 / (SIMPLIFY_LUMA_LEVELS - 1);
+    for (let offset = 0; offset < pixels.length; offset += 4) {
+      const r = pixels[offset], g = pixels[offset+1], b = pixels[offset+2];
+      const lightness = r * .2126 + g * .7152 + b * .0722;
+      const band = Math.min(255, Math.round(lightness / step) * step);
+      const shift = (band - lightness) * SIMPLIFY_STRENGTH;
+      pixels[offset] = Math.max(0, Math.min(255, r + shift));
+      pixels[offset+1] = Math.max(0, Math.min(255, g + shift));
+      pixels[offset+2] = Math.max(0, Math.min(255, b + shift));
+    }
+    stylizedCtx.putImageData(image, 0, 0);
+  }
+  function currentRenderBase() {
+    return simplifyPortrait ? stylizedCanvas : sourceCanvas;
+  }
+
   function drawTintFallback() {
     // The canonical source image has already been drawn this frame.
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.drawImage(sourceCanvas,0,0);
+    ctx.drawImage(currentRenderBase(),0,0);
     ctx.fillStyle=palette[index].color;
     ctx.globalAlpha=.18;
     ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -210,7 +265,9 @@
   }
   function paintSkin(mask) {
     if(!mask?.getAsUint8Array) {drawTintFallback();return;}
-    const frame = sourceCtx.getImageData(0,0,sourceCanvas.width,sourceCanvas.height);
+    // Stage 2 affects only the non-skin base. Skin remains one exact flat shade.
+    const imageContext = simplifyPortrait ? stylizedCtx : sourceCtx;
+    const frame = imageContext.getImageData(0,0,sourceCanvas.width,sourceCanvas.height);
     const rgba=frame.data;
     const categories=mask.getAsUint8Array();
     const mw=mask.width,mh=mask.height;
@@ -264,7 +321,7 @@
     ctx.save();
     if(pathPoints(landmarks,ids,{close:true,scale})) {
       ctx.clip();
-      ctx.drawImage(sourceCanvas,0,0);
+      ctx.drawImage(currentRenderBase(),0,0);
     }
     ctx.restore();
   }
@@ -316,6 +373,7 @@
     canvasSize();
     // Capture one identical, already-mirrored frame for display and inference.
     mirroredPhoto();
+    if (simplifyPortrait) prepareSimplifiedPortrait();
     try {
       if(segmenter){
         const result=segmenter.segmentForVideo(sourceCanvas,now);
@@ -341,7 +399,7 @@
       firstFrameRendered=true;
       if(!segmenter) setStatus('Camera is live. Flat-colour painter unavailable; showing a gentle tinted preview.');
       else if(!faceLandmarker) setStatus('Flat-colour mirror active. Facial model could not load, so illustrated outlines are unavailable.');
-      else setStatus('Flat skin and illustrated facial contours active. Toggle Illustrated Features to compare.');
+      else setStatus('Flat skin and illustrated facial contours active. Use Simplified Portrait to compare V12 with V11.1.');
     }
   }
 
