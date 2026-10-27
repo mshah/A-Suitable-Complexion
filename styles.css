@@ -179,3 +179,45 @@ html{scroll-padding-top:130px}
 .chapter-card--conclusion{background:#e5d3c2}
 @media(max-width:860px){.mirror-layout{grid-template-columns:1fr}.mirror-art{min-height:400px}.mirror-outline{width:min(63vw,340px)}.conclusion-columns{grid-template-columns:1fr}.conclusion-sticky{position:static}.next-chapter-layout{align-items:start;flex-direction:column}}
 @media(max-width:600px){.mirror-section{padding:60px 0}.mirror-art{min-height:360px}.mirror-outline{width:260px}.mirror-question{font-size:26px}.conclusion-body p{font:20px/1.55 var(--display)}.conclusion-question h2{font-size:clamp(38px,9vw,55px)}.final-image-section>h2{font-size:43px}.conclusion-actions{flex-direction:column}.next-chapter h2{font-size:54px}}
+
+/* V9: the mirror and the market — optional, private camera reflection.
+   Visual tint illustrates assignment; it does not detect or match complexion. */
+.mirror-art--interactive { min-width:0; min-height:0; width:100%; max-width:490px; margin-inline:auto; gap:0; }
+.mirror-interactive-shell { width:min(100%,348px); padding:12px; border-width:12px; transform:none; aspect-ratio:.76; box-shadow:inset 0 0 0 3px #d8c8b5,0 20px 45px #6d54433c; background:#b8aa97; position:relative; }
+.mirror-interactive-inside { display:block; border:1px solid #786653; overflow:hidden; position:relative; }
+.mirror-viewport { width:100%; height:100%; position:relative; overflow:hidden; background:linear-gradient(135deg,#f6eee2 4%,var(--mirror-color,#C99870) 100%); isolation:isolate; }
+.mirror-offline { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; padding:17px 13px 24px; color:#513d32; text-align:center; z-index:1; }
+.mirror-offline-heading { font:16px/1.22 var(--display); letter-spacing:.03em; max-width:14ch; }
+.mirror-offline p { margin:0; font:13px/1.4 var(--display); }
+.mirror-figure { width:63%; max-height:62%; filter:drop-shadow(0 4px 9px #4b30252b); opacity:.73; }
+.mirror-video { position:absolute; width:100%; height:100%; inset:0; object-fit:cover; transform:scaleX(-1); z-index:2; }
+.mirror-video[hidden],.mirror-offline[hidden],.mirror-camera-controls button[hidden] { display:none !important; }
+.mirror-colorwash { display:none; position:absolute; inset:0; z-index:3; background:var(--mirror-color); mix-blend-mode:color; opacity:.2; pointer-events:none; }
+.mirror-art--interactive.is-camera-live .mirror-colorwash { display:block; }
+.mirror-assignment { position:absolute; bottom:8%; left:50%; transform:translateX(-50%); background:rgba(248,241,229,.93); border:1px solid #5e4938; box-shadow:0 4px 16px #35261b30; z-index:4; display:flex; align-items:baseline; justify-content:center; gap:10px; padding:8px 14px 6px; white-space:nowrap; }
+.mirror-assignment span { color:#6e5440; font:9px var(--mono); letter-spacing:.1em; }
+.mirror-assignment strong { color:#2d231d; font:33px/1 var(--display); font-weight:normal; }
+.mirror-interaction-panel { background:#f2eadd; border:1px solid #bfae9b; margin:22px auto 0; padding:17px 16px 14px; width:min(100%,490px); }
+.mirror-interface-head { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:baseline; padding-bottom:10px; border-bottom:1px solid #d2c1ac; }
+.mirror-interface-head span { color:#735d4c; font:9px/1.4 var(--mono); letter-spacing:.06em; }
+.mirror-interface-head strong { color:#382820; font:23px/1.1 var(--display); font-weight:normal; }
+.mirror-palette { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:4px; margin:13px 0 12px; }
+.mirror-chip { min-width:0; min-height:46px; width:100%; border:1px solid rgba(52,41,33,.28); background:var(--chip); color:#2a221d; cursor:pointer; font:12px/1 var(--mono); font-weight:500; box-shadow:inset 0 -16px #ffffff25; transition:transform .13s,outline-color .13s; }
+.mirror-chip:nth-child(n+4) { color:#fff9ed; text-shadow:0 1px 3px #0006; }
+.mirror-chip[aria-pressed='true'] { outline:3px solid #251c18; outline-offset:1px; transform:translateY(-3px); }
+.mirror-chip:hover { transform:translateY(-3px); }
+.mirror-cycle-controls { display:grid; grid-template-columns:1fr 1fr 2.2fr; gap:5px; }
+.mirror-cycle-controls button,.mirror-camera-controls button { cursor:pointer; min-height:39px; border:1px solid #aa957e; background:#e3d6c3; font:10px/1.3 var(--mono); color:#30271f; letter-spacing:.03em; padding:8px 7px; }
+.mirror-cycle-controls button:hover,.mirror-camera-controls button:hover { background:#d4bea5; }
+.mirror-cycle-controls button[aria-pressed='true'] { color:#fffaf0; background:#8c573d; border-color:#8c573d; }
+.mirror-camera-controls { display:flex; justify-content:center; gap:8px; margin-top:14px; }
+.mirror-camera-controls button { background:#302720; color:#f6ede0; border-color:#302720; width:100%; }
+.mirror-camera-controls button:hover { background:#58402f; color:#fff; }
+.mirror-chip:focus-visible,.mirror-cycle-controls button:focus-visible,.mirror-camera-controls button:focus-visible { outline:3px solid #b34729; outline-offset:3px; }
+.mirror-camera-status { text-align:center; font:11px/1.6 var(--sans)!important; color:#644b3a; margin:10px 0 0; }
+.mirror-privacy { text-align:left; font:10.5px/1.6 var(--sans)!important; color:#66584b; border-top:1px solid #d5c7b9; padding-top:10px; margin:14px 0 0; }
+@media(max-width:860px) { .mirror-art--interactive { max-width:450px; } }
+@media(max-width:600px) { .mirror-interactive-shell{width:min(78vw,324px);} .mirror-interaction-panel{padding:14px 10px;} .mirror-cycle-controls button span{display:none;} .mirror-chip{min-height:44px;} }
+@media(prefers-reduced-motion:reduce) { .mirror-chip { transition:none; } }
+
+.mirror-interaction-invite{border-left:3px solid #936449;padding:6px 0 6px 18px;margin-top:20px!important;font:clamp(17px,1.5vw,21px)/1.55 var(--display)!important;color:#6c4533}

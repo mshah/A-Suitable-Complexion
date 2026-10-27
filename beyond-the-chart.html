@@ -12,7 +12,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/><script defer="" src="site.js"></script>
-</head><body class="page-beyond-chart"><a class="skip" href="#main">Skip to content</a>
+<script defer="True" src="mirror.js"></script></head><body class="page-beyond-chart"><a class="skip" href="#main">Skip to content</a>
 <div class="review-bar">PRIVATE REVIEW · 16 SELECTED PAINTINGS · NOT FOR PUBLICATION</div>
 <header class="site-header"><div class="frame navrow"><a aria-label="A Suitable Complexion, exhibition home" class="brand" href="index.html"><span class="brand-emblem">A<br/>SC</span><span class="brand-title">A Suitable<br/><i>Complexion</i></span></a>
 <button aria-controls="navLinks" aria-expanded="false" class="menu-toggle" type="button">Explore <span aria-hidden="true">☰</span></button>
@@ -33,12 +33,55 @@
 <p>It is a question many of us encounter as children. In <em>Snow White</em>, the mirror is asked not simply to reflect a face, but to judge it. Beauty becomes a competition. Someone must be the fairest, and everyone else must fall somewhere below.</p>
 <p>The fairy tale belongs to a different cultural history from India's matrimonial complexion classifications. Yet both reveal a familiar impulse: to turn beauty into a hierarchy and to present that hierarchy as though it were natural.</p>
 <p>In matrimonial biodata, the mirror becomes a description: very fair, fair, wheatish, dark. In the beauty industry, it becomes a product recommendation. A person is shown an ideal and offered something to bring them closer to it.</p>
+<p class="mirror-interaction-invite">Try the mirror: assign yourself a number, change it, and consider what has actually changed.</p></div>
+<div class="mirror-art mirror-art--interactive" id="mirrorExperience">
+<div class="mirror-outline mirror-interactive-shell" id="mirrorFrame" style="--mirror-color:#C99870">
+<div class="mirror-inside mirror-interactive-inside">
+<div class="mirror-viewport">
+<div class="mirror-offline" id="mirrorOffline">
+<div class="mirror-offline-heading">A FACE IS NOT A NUMBER</div>
+<svg aria-hidden="true" class="mirror-figure" viewbox="0 0 200 270">
+<path d="M43 257 Q39 221 56 205 L79 191 L81 172 C59 154 54 131 56 96 C56 39 82 23 111 27 C145 30 157 62 148 113 C146 144 133 164 121 175 L125 193 L153 207 Q171 223 170 257" fill="none" stroke="currentColor" stroke-width="2.2"></path>
+<path d="M56 104 C45 59 61 35 83 27 C111 7 147 31 153 81 M78 112 Q91 106 102 113 M117 113 Q129 106 141 113 M109 116 L106 139 L115 143 M91 157 Q108 164 126 155" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M75 192 Q103 218 131 193" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+</svg>
+
 </div>
-<div aria-label="Typography and diagram showing a mirror reduced to seven colour chips" class="mirror-art">
-<div class="mirror-outline">
-<div class="mirror-inside"><div class="mirror-question">WHO DECIDES?</div><div class="mirror-shades"><i style="background:#F0D5BC"></i><i style="background:#DDB58F"></i><i style="background:#C99870"></i><i style="background:#AC7953"></i><i style="background:#926143"></i><i style="background:#70482F"></i><i style="background:#4B3025"></i></div></div>
+<video aria-label="Your mirrored live camera view" autoplay="" class="mirror-video" hidden="" id="mirrorVideo" muted="" playsinline=""></video>
+<div aria-hidden="true" class="mirror-colorwash"></div>
+<div aria-hidden="true" class="mirror-assignment">
+<span>ASSIGNED /</span>
+<strong id="mirrorAssignedNum">03</strong>
 </div>
-<div class="mirror-number">01 → 07</div>
+</div>
+</div>
+</div>
+<div class="mirror-interaction-panel">
+<div class="mirror-interface-head">
+<span>THE RANKING DEVICE / 01—07</span>
+<strong aria-live="polite" id="mirrorSelectedLabel">03 · Wheatish</strong>
+</div>
+<div aria-label="Choose a complexion classification" class="mirror-palette" role="group">
+<button aria-label="01 Very Fair" aria-pressed="false" class="mirror-chip" data-mirror-index="0" style="--chip:#F0D5BC" type="button">01</button>
+<button aria-label="02 Fair" aria-pressed="false" class="mirror-chip" data-mirror-index="1" style="--chip:#DDB58F" type="button">02</button>
+<button aria-label="03 Wheatish" aria-pressed="true" class="mirror-chip" data-mirror-index="2" style="--chip:#C99870" type="button">03</button>
+<button aria-label="04 Wheatish Medium" aria-pressed="false" class="mirror-chip" data-mirror-index="3" style="--chip:#AC7953" type="button">04</button>
+<button aria-label="05 Wheatish Brown" aria-pressed="false" class="mirror-chip" data-mirror-index="4" style="--chip:#926143" type="button">05</button>
+<button aria-label="06 Wheatish Dark" aria-pressed="false" class="mirror-chip" data-mirror-index="5" style="--chip:#70482F" type="button">06</button>
+<button aria-label="07 Dark" aria-pressed="false" class="mirror-chip" data-mirror-index="6" style="--chip:#4B3025" type="button">07</button>
+</div>
+<div class="mirror-cycle-controls">
+<button aria-label="Previous shade" id="mirrorPrevious" type="button">← <span>PREV</span></button>
+<button aria-label="Next shade" id="mirrorNext" type="button"><span>NEXT</span> →</button>
+<button aria-pressed="false" id="mirrorCycle" type="button">CYCLE THE LABELS ↻</button>
+</div>
+<div class="mirror-camera-controls">
+<button id="mirrorStartCamera" type="button">USE MY CAMERA</button>
+<button hidden="" id="mirrorStopCamera" type="button">TURN OFF CAMERA</button>
+</div>
+<p aria-live="polite" class="mirror-camera-status" id="mirrorStatus" role="status">Camera is off. You can explore every shade without using it.</p>
+<p class="mirror-privacy">Camera access is optional. Video stays in your browser: no photographs, recordings, uploads, face detection or automated complexion measurement. The tint and labels are an artistic demonstration, not a skin-tone reading.</p>
+</div>
 </div>
 </div>
 <div class="frame mirror-verdict">
