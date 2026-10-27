@@ -124,3 +124,58 @@ html{scroll-padding-top:130px}
 .curation-note{display:block;font:9px var(--mono);letter-spacing:.05em;color:#8a573e;margin-top:5px}
 .review-reserve .curation-note{color:#807569}
 @media(max-width:600px){.wedding-thesis{padding:22px 17px}.gallery-act-heading{display:block}.gallery-act-heading p{margin:10px 0 0}}
+
+/* V7: artist's changing complexion assignment, curatorial comparison */
+.variation-study { margin-top: 2rem; padding: clamp(1.35rem, 3vw, 2.75rem); border: 1px solid #bba68e; background: #f1e7d7; max-width: 920px; }
+.variation-study h3 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(2rem, 4.4vw, 3.8rem); line-height: 1.03; margin: .85rem 0 1rem; }
+.variation-study p { max-width: 70ch; line-height: 1.7; }
+.variation-study .fine { font-size: .83rem; color: #65564b; }
+
+/* V8: conclusion — The Mirror and the Market / Beyond the Chart */
+.conclusion-heading{background:linear-gradient(120deg,#f2eee6,#e7dbc9);}
+.mirror-section{background:#e4d8c8;overflow:hidden;padding:clamp(64px,8vw,120px) 0 80px;border-bottom:1px solid #baa78e}
+.mirror-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);gap:clamp(36px,6vw,90px);align-items:center}
+.mirror-copy h2{font-size:clamp(66px,9.2vw,135px);margin:24px 0 40px;line-height:.82}
+.mirror-copy h2 em{color:#925c41}
+.mirror-copy p{max-width:650px;font-size:clamp(15px,1.25vw,18px);line-height:1.76}
+.mirror-copy p:first-of-type{font:clamp(27px,3vw,46px)/1.15 var(--display);color:#805038;letter-spacing:-.025em;margin:35px 0}
+.mirror-art{display:flex;align-items:center;flex-direction:column;min-height:530px;justify-content:center}
+.mirror-outline{width:min(100%,390px);aspect-ratio:.74;border:13px solid #897159;border-radius:48% 48% 9% 9% / 29% 29% 9% 9%;box-shadow:inset 0 0 0 4px #e9d8ba,0 12px 38px #6d544327;background:radial-gradient(ellipse at 65% 24%,#f7eddd 0%,#bdada1 80%);padding:15px;transform:rotate(-2deg)}
+.mirror-inside{width:100%;height:100%;border:2px solid rgba(70,53,39,.43);border-radius:45% 45% 6% 6% / 27% 27% 6% 6%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mirror-question{font:clamp(24px,3vw,35px)/1 var(--display);text-align:center;color:#513d32;letter-spacing:.02em}
+.mirror-shades{display:flex;gap:2px;width:76%;height:85px;transform:rotate(90deg);justify-content:center}
+.mirror-shades i{display:block;flex:1;border:1px solid rgba(56,38,29,.25)}
+.mirror-number{margin-top:30px;font:13px var(--mono);color:#8e5b3b;letter-spacing:.18em}
+.mirror-verdict{margin-top:clamp(45px,7vw,95px);padding-top:clamp(28px,3vw,45px);border-top:1px solid #a99683}
+.mirror-verdict p:first-child{font:clamp(31px,4.8vw,67px)/1.05 var(--display);max-width:1000px;letter-spacing:-.035em;margin:0}
+.mirror-verdict span{color:#332720}
+.mirror-verdict em{color:#935739}
+.mirror-verdict .fine{font-size:13px;color:#645445;margin-top:30px}
+.conclusion-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(35px,9vw,140px);align-items:start}
+.conclusion-sticky{position:sticky;top:140px}
+.conclusion-sticky h2{font-size:clamp(45px,5.6vw,78px)}
+.conclusion-sticky h2 em{color:#955e45}
+.conclusion-ornament{display:block;width:min(180px,50%);height:1px;background:#ac7355;margin-top:35px}
+.conclusion-body p{font:clamp(17px,1.55vw,21px)/1.75 var(--display);margin:0 0 25px;letter-spacing:0}
+.conclusion-body p:first-child{font-size:clamp(25px,2.4vw,38px);line-height:1.22;margin-bottom:35px}
+.conclusion-question{background:#262925;color:#f4eade;padding:clamp(90px,11vw,160px) 0}
+.conclusion-question h2{font:clamp(41px,6.7vw,92px)/1.05 var(--display);letter-spacing:-.035em;margin:32px 0 0;max-width:1090px}
+.conclusion-question h2 em{color:#ddb595}
+.final-image-section{padding-top:clamp(85px,9vw,140px);padding-bottom:clamp(85px,9vw,140px);text-align:center}
+.final-image-section>.eyebrow{margin-bottom:28px}
+.final-image-section>h2{max-width:930px;margin:0 auto 54px;font-size:clamp(39px,5.5vw,76px)}
+.final-family-image{margin:0 auto;width:min(100%,780px);}
+.final-family-image img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain;box-shadow:0 4px 32px rgba(46,37,30,.10);border:1px solid #bbad9d;background:#e9dbc8}
+.final-family-image figcaption{margin-top:13px;font:11px/1.6 var(--mono);letter-spacing:.03em;color:var(--muted)}
+.conclusion-final-line{font:clamp(37px,5.4vw,76px)/1.04 var(--display);letter-spacing:-.035em;max-width:950px;margin:75px auto 45px}
+.conclusion-final-line em{color:#975f43}
+.conclusion-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:26px;margin-top:38px}
+.next-chapter{padding:clamp(62px,8vw,120px) 0;background:#8b6046;color:#fff6e9}
+.next-chapter .eyebrow{color:#f0d6bf}
+.next-chapter-layout{display:flex;justify-content:space-between;align-items:end;gap:35px}
+.next-chapter h2{font-size:clamp(49px,6vw,87px);margin:14px 0 18px}
+.next-chapter p{font-size:16px;max-width:580px}
+.next-chapter .btn{flex-shrink:0}
+.chapter-card--conclusion{background:#e5d3c2}
+@media(max-width:860px){.mirror-layout{grid-template-columns:1fr}.mirror-art{min-height:400px}.mirror-outline{width:min(63vw,340px)}.conclusion-columns{grid-template-columns:1fr}.conclusion-sticky{position:static}.next-chapter-layout{align-items:start;flex-direction:column}}
+@media(max-width:600px){.mirror-section{padding:60px 0}.mirror-art{min-height:360px}.mirror-outline{width:260px}.mirror-question{font-size:26px}.conclusion-body p{font:20px/1.55 var(--display)}.conclusion-question h2{font-size:clamp(38px,9vw,55px)}.final-image-section>h2{font-size:43px}.conclusion-actions{flex-direction:column}.next-chapter h2{font-size:54px}}
