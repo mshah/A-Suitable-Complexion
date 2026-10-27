@@ -1,4 +1,4 @@
-/* A Suitable Complexion, V12 — Stage 2 optional image simplification.
+/* A Suitable Complexion, V14 — Stage 4 garment, hair & accessory detail (built on V12).
    Camera processing stays entirely in the browser. We don't measure complexion,
    recognize visitors, save frames, or transmit camera images to any server.
    External MediaPipe code and pretrained model files load only after camera opt-in.
@@ -32,13 +32,14 @@
   const decide = $('#mirrorDecide');
   const linesButton = $('#mirrorFeatureLines');
   const simplifyButton = $('#mirrorSimplify');
+  const detailsButton = $('#mirrorDetails');
   const start = $('#mirrorStartCamera');
   const stop = $('#mirrorStopCamera');
   const status = $('#mirrorStatus');
   const video = $('#mirrorVideo');
   const canvas = $('#mirrorCanvas');
   const offline = $('#mirrorOffline');
-  if (!canvas || !linesButton || !simplifyButton) return;
+  if (!canvas || !linesButton || !simplifyButton || !detailsButton) return;
 
   const ctx = canvas.getContext('2d', { willReadFrequently:true });
   const sourceCanvas = document.createElement('canvas');
@@ -50,7 +51,8 @@
 
   let index = 2;
   let showLines = true;
-  let simplifyPortrait = false; // Default to the known-good V11.1 rendering.
+  let simplifyPortrait = false; // Kept unchanged from V12.
+  let preserveDetails = false; // OFF = byte-for-byte V12 rendering baseline.
   let cycleTimer = null;
   let decideTimer = null;
   let stream = null;
@@ -135,6 +137,15 @@
     else setStatus(simplifyPortrait
       ? 'Simplified portrait enabled. Turn on your camera to compare the illustration treatments.'
       : 'Simplified portrait disabled. Turn on your camera to see the original treatment.');
+  });
+
+  detailsButton.addEventListener('click', () => {
+    preserveDetails = !preserveDetails;
+    detailsButton.setAttribute('aria-pressed', String(preserveDetails));
+    detailsButton.textContent = 'GARMENT & HAIR DETAIL: ' + (preserveDetails ? 'ON' : 'OFF');
+    setStatus(preserveDetails
+      ? 'Garment & Hair Detail on: restores hair, fabric and accessory texture without changing skin colours.'
+      : 'Garment & Hair Detail off: showing the original V12 rendering.');
   });
 
   async function fileset() {
@@ -254,6 +265,60 @@
     return simplifyPortrait ? stylizedCanvas : sourceCanvas;
   }
 
+  // Stage 4: keep the existing V12 rendering untouched unless explicitly enabled.
+  // The selfie multiclass model labels 1=hair, 4=clothing, 5=other/accessories.
+  // We preserve V12's 2=body skin and 3=face skin completely: no outlining,
+  // no blending, no grade changes, and no extra eyebrow-edge outlines.
+  // This passes only RGB data to the existing V12 paintSkin() step.
+  const DETAIL_CLASSES = new Set([1, 4, 5]);
+  function detailPreservedFrame(mask) {
+    const w = sourceCanvas.width, h = sourceCanvas.height;
+    const sourcePixels = sourceCtx.getImageData(0, 0, w, h).data;
+    const result = (simplifyPortrait ? stylizedCtx : sourceCtx).getImageData(0, 0, w, h);
+    const pixels = result.data;
+    const categories = mask.getAsUint8Array();
+    const mw = mask.width, mh = mask.height;
+    const xs = new Uint16Array(w);
+    const rowStride = w * 4;
+    for (let x = 0; x < w; x++) xs[x] = Math.min(mw-1, Math.floor(x * mw/w));
+    // One-pass neutral-color luminance detail enhancement, bounded to ±15 levels.
+    // Interior high-frequency patterns become clearer; edge pixels deliberately
+    // receive less enhancement to avoid halos against the flat skin colour.
+    for (let y = 1; y < h-1; y++) {
+      const sy = Math.min(mh-1, Math.floor(y * mh/h));
+      const maskRow = sy * mw;
+      const line = y * rowStride;
+      for (let x = 1; x < w-1; x++) {
+        const sx = xs[x], cls = categories[maskRow+sx];
+        if (!DETAIL_CLASSES.has(cls)) continue;
+        const p = line + x*4;
+        const l = (sourcePixels[p]*.2126+sourcePixels[p+1]*.7152+sourcePixels[p+2]*.0722);
+        const left = p-4, right=p+4, above=p-rowStride, below=p+rowStride;
+        const neighbor = (
+          sourcePixels[left]*.2126+sourcePixels[left+1]*.7152+sourcePixels[left+2]*.0722+
+          sourcePixels[right]*.2126+sourcePixels[right+1]*.7152+sourcePixels[right+2]*.0722+
+          sourcePixels[above]*.2126+sourcePixels[above+1]*.7152+sourcePixels[above+2]*.0722+
+          sourcePixels[below]*.2126+sourcePixels[below+1]*.7152+sourcePixels[below+2]*.0722
+        ) * .25;
+        // Keep the unchanged originals close to boundaries and avoid hard seams.
+        const interior = categories[maskRow+xs[x-1]]===cls &&
+          categories[maskRow+xs[x+1]]===cls &&
+          categories[Math.min(mh-1, Math.floor((y-1)*mh/h))*mw+sx]===cls &&
+          categories[Math.min(mh-1, Math.floor((y+1)*mh/h))*mw+sx]===cls;
+        const mix = interior ? 1 : .20;
+        const detail = Math.max(-15, Math.min(15, (l-neighbor)*.54)) * mix;
+        // For the posterized rendering, recover ~83% of true textile detail.
+        // For unsimplified V12, leave the colour intact and just reinforce lines.
+        const recover = simplifyPortrait ? .83 * mix : 0;
+        for (let c = 0; c < 3; c++) {
+          const base = pixels[p+c] + (sourcePixels[p+c]-pixels[p+c])*recover;
+          pixels[p+c] = Math.max(0, Math.min(255, Math.round(base+detail)));
+        }
+      }
+    }
+    return result;
+  }
+
   function drawTintFallback() {
     // The canonical source image has already been drawn this frame.
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -267,7 +332,9 @@
     if(!mask?.getAsUint8Array) {drawTintFallback();return;}
     // Stage 2 affects only the non-skin base. Skin remains one exact flat shade.
     const imageContext = simplifyPortrait ? stylizedCtx : sourceCtx;
-    const frame = imageContext.getImageData(0,0,sourceCanvas.width,sourceCanvas.height);
+    const frame = preserveDetails
+      ? detailPreservedFrame(mask)
+      : imageContext.getImageData(0,0,sourceCanvas.width,sourceCanvas.height);
     const rgba=frame.data;
     const categories=mask.getAsUint8Array();
     const mw=mask.width,mh=mask.height;
@@ -399,7 +466,7 @@
       firstFrameRendered=true;
       if(!segmenter) setStatus('Camera is live. Flat-colour painter unavailable; showing a gentle tinted preview.');
       else if(!faceLandmarker) setStatus('Flat-colour mirror active. Facial model could not load, so illustrated outlines are unavailable.');
-      else setStatus('Flat skin and illustrated facial contours active. Use Simplified Portrait to compare V12 with V11.1.');
+      else setStatus('Flat skin and illustrated facial contours active. Use Garment & Hair Detail to compare this stage with V12.');
     }
   }
 

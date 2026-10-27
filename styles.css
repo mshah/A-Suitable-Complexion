@@ -249,3 +249,10 @@ html{scroll-padding-top:130px}
 #mirrorSimplify:hover{filter:brightness(.94)}
 #mirrorSimplify:focus-visible{outline:3px solid #b34729;outline-offset:3px}
 @media(max-width:600px){#mirrorSimplify{grid-column:1/-1}}
+
+/* V14, Stage 4: optional selective hair, clothing and accessory detail from V12. */
+#mirrorDetails{grid-column:1/-1;background:#eee5d6;border:1px solid #a28c72;color:#31271f}
+#mirrorDetails[aria-pressed="true"]{background:#6b5140;color:#fff8ef;border-color:#6b5140}
+#mirrorDetails:hover{filter:brightness(.94)}
+#mirrorDetails:focus-visible{outline:3px solid #b34729;outline-offset:3px}
+@media(max-width:600px){#mirrorDetails{grid-column:1/-1}}
