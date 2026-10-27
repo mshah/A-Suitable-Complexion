@@ -231,62 +231,15 @@ html{scroll-padding-top:130px}
 .mirror-art--interactive.is-camera-live .mirror-assignment{backdrop-filter:blur(5px)}
 @media(max-width:600px){.mirror-cycle-controls{grid-template-columns:1fr 1fr}.mirror-cycle-controls #mirrorCycle{grid-column:1/-1}.mirror-cycle-controls #mirrorDecide{grid-column:1/-1}}
 
-/* V11, Stage 1: facial contour overlay on existing flat-colour mirror. */
-#mirrorFeatureLines{grid-column:1/-1;background:#efe4d6;border:1px solid #a28c72;color:#31271f}
-#mirrorFeatureLines[aria-pressed="true"]{background:#382b22;color:#f7efe5;border-color:#382b22}
-#mirrorFeatureLines:hover{filter:brightness(.92)}
-/* The old semi-transparent V9 wash must not recolour the newly painted canvas. */
+/* Final illustrated mirror: the original video wash is suppressed and one
+   canonical mirrored canvas drives the painted portrait and both local models. */
 .mirror-art--interactive.is-camera-live .mirror-colorwash{display:none}
 .mirror-cycle-controls button:disabled{opacity:.6;cursor:progress}
-@media(max-width:600px){#mirrorFeatureLines{grid-column:1/-1}}
+.mirror-canvas{object-fit:fill!important;transform:none!important}
 
-/* V11.1 alignment: the image input to both models has the viewport's exact aspect ratio. */
-.mirror-canvas{object-fit:fill!important; transform:none!important;}
-
-/* V12, Stage 2: side-by-side-in-time comparison of original and simplified portrait. */
-#mirrorSimplify{grid-column:1/-1;background:#eee5d6;border:1px solid #a28c72;color:#31271f}
-#mirrorSimplify[aria-pressed="true"]{background:#8a573e;color:#fff8ef;border-color:#8a573e}
-#mirrorSimplify:hover{filter:brightness(.94)}
-#mirrorSimplify:focus-visible{outline:3px solid #b34729;outline-offset:3px}
-@media(max-width:600px){#mirrorSimplify{grid-column:1/-1}}
-
-/* V14, Stage 4: optional selective hair, clothing and accessory detail from V12. */
-#mirrorDetails{grid-column:1/-1;background:#eee5d6;border:1px solid #a28c72;color:#31271f}
-#mirrorDetails[aria-pressed="true"]{background:#6b5140;color:#fff8ef;border-color:#6b5140}
-#mirrorDetails:hover{filter:brightness(.94)}
-#mirrorDetails:focus-visible{outline:3px solid #b34729;outline-offset:3px}
-@media(max-width:600px){#mirrorDetails{grid-column:1/-1}}
-
-/* V15: separate, optional colour grading presets. Skin palette stays immutable. */
-.mirror-grade-fieldset{border-top:1px solid #cbb9a3;margin-top:14px;padding-top:15px}
-.mirror-grade-title{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:3px 8px;margin:0 0 10px!important;font:10px/1.5 var(--mono)!important;letter-spacing:.09em;color:#604632}
-.mirror-grade-title span{font:10px/1.5 var(--sans);letter-spacing:0;color:#8a725f}
-.mirror-grade-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
-.mirror-grade-chip{cursor:pointer;border:1px solid #ad9782;min-height:41px;min-width:0;padding:8px 4px;background:#ede1d1;color:#35281f;font:10px/1.2 var(--mono);letter-spacing:.035em}
-.mirror-grade-chip[aria-pressed="true"]{background:#583a2b;color:#fff7ec;border-color:#583a2b;box-shadow:inset 0 0 0 2px #fff2db25}
-.mirror-grade-chip:hover{filter:brightness(.94)}
-.mirror-grade-chip:focus-visible{outline:3px solid #b34729;outline-offset:3px}
-@media(max-width:600px){.mirror-grade-fieldset{margin-top:12px;padding-top:13px}.mirror-grade-chip{min-height:43px}}
-
-/* V16: Compare original, V15 soft and a more visibly flattened portrait. */
-.mirror-simplify-fieldset{margin-top:12px;padding:12px 0 2px;border-top:1px solid #cbb9a3}
-.mirror-simplify-title{font:10px/1.5 var(--mono)!important;letter-spacing:.09em;color:#604632;margin:0 0 9px!important}
-.mirror-simplify-options{display:grid;grid-template-columns:1fr 1.3fr 1.7fr;gap:5px}
-.mirror-simplify-chip{cursor:pointer;border:1px solid #ad9782;min-height:41px;padding:8px 4px;min-width:0;background:#ede1d1;color:#35281f;font:10px/1.2 var(--mono);letter-spacing:.015em}
-.mirror-simplify-chip[aria-pressed="true"]{background:#8a573e;color:#fff8ef;border-color:#8a573e;box-shadow:inset 0 0 0 2px #fff2db25}
-.mirror-simplify-chip:hover{filter:brightness(.94)}
-.mirror-simplify-chip:focus-visible{outline:3px solid #b34729;outline-offset:3px}
-@media(max-width:600px){.mirror-simplify-options{grid-template-columns:1fr 1.1fr 1.5fr}.mirror-simplify-chip{min-height:43px;font-size:9px}}
-
-/* V17 — reduced, mobile-friendly A/B controls: V16 More Flat + V15 Gallery. */
-.mirror-mobile-presets{margin-top:14px;padding-top:14px;border-top:1px solid #cbb9a3}
-.mirror-mobile-presets-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 11px!important;color:#604632;font:10px/1.5 var(--mono)!important;letter-spacing:.09em}
-.mirror-mobile-presets-heading span{font:11px/1.5 var(--sans);letter-spacing:0;color:#826f5e}
-.mirror-mobile-preset-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mirror-mobile-preset-button{cursor:pointer;min-width:0;min-height:49px;padding:10px 9px;border:1px solid #a68f79;border-radius:2px;color:#45352b;background:#ede1d1;font:10px/1.4 var(--mono);letter-spacing:.035em;transition:background .14s ease}
-.mirror-mobile-preset-button[aria-pressed="true"]{background:#6e4634;color:#fff9f1;border-color:#6e4634;box-shadow:inset 0 0 0 1px #fff5e51f}
-.mirror-mobile-preset-button:hover{filter:brightness(.94)}
-.mirror-mobile-preset-button:focus-visible{outline:3px solid #b34729;outline-offset:3px}
-.mirror-mobile-preset-hint{margin:10px 0 0!important;font:11px/1.5 var(--sans)!important;color:#695849}
-@media(max-width:600px){.mirror-mobile-presets{margin-top:12px;padding-top:12px}.mirror-mobile-preset-buttons{grid-template-columns:1fr;gap:7px}.mirror-mobile-preset-button{min-height:48px;font-size:11px}}
-@media(prefers-reduced-motion:reduce){.mirror-mobile-preset-button{transition:none}}
+/* V18 — the mirror's deliberate randomness is explained before any assignment. */
+.mirror-random-explainer{grid-column:1/-1;border:1px solid #c7ae92;border-left:4px solid #82563f;background:#f8f1e6;padding:12px 13px 10px;margin-top:8px;color:#392b23}
+.mirror-random-explainer strong{display:block;font:17px/1.15 var(--display);letter-spacing:.01em}
+.mirror-random-explainer p{margin:6px 0 0!important;font:12px/1.55 var(--sans)!important;color:#5d493c}
+#mirrorDecide{font-size:11px;letter-spacing:.025em;min-height:46px}
+@media(max-width:600px){.mirror-random-explainer{padding:12px 11px}.mirror-random-explainer strong{font-size:18px}}

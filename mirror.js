@@ -1,4 +1,4 @@
-/* A Suitable Complexion, V17 — mobile-preview defaults (built on V16).
+/* A Suitable Complexion, V18 — fixed gallery mirror settings (built on V17).
    Camera processing stays entirely in the browser. We don't measure complexion,
    recognize visitors, save frames, or transmit camera images to any server.
    External MediaPipe code and pretrained model files load only after camera opt-in.
@@ -30,17 +30,13 @@
   const next = $('#mirrorNext');
   const cycle = $('#mirrorCycle');
   const decide = $('#mirrorDecide');
-  const linesButton = $('#mirrorFeatureLines');
-  const simplifyButton = $('#mirrorMoreFlat');
-  const detailsButton = $('#mirrorDetails');
-  const gradeButton = $('#mirrorGalleryGrade');
   const start = $('#mirrorStartCamera');
   const stop = $('#mirrorStopCamera');
   const status = $('#mirrorStatus');
   const video = $('#mirrorVideo');
   const canvas = $('#mirrorCanvas');
   const offline = $('#mirrorOffline');
-  if (!canvas || !linesButton || !detailsButton || !gradeButton || !simplifyButton) return;
+  if (!canvas || !video || !status || !decide) return;
 
   const ctx = canvas.getContext('2d', { willReadFrequently:true });
   const sourceCanvas = document.createElement('canvas');
@@ -55,13 +51,14 @@
   const featureSourceCtx = featureSourceCanvas.getContext('2d');
 
   let index = 2;
-  let showLines = true;
-  let simplifyPortrait = true; // V16 stronger finish selected by default.
-  let simplificationMode = 'flat'; // ON = stronger V16, OFF = unsimplified baseline.
-  let preserveDetails = false; // OFF = V12 detail baseline.
-  let gradePreset = 'gallery'; // ON = V15 Gallery grade; OFF = original ungraded base.
+  const showLines = true; // Artist-approved illustrated features: fixed ON.
+  const simplifyPortrait = true; // Artist-approved More Flat portrait finish: fixed ON.
+  const simplificationMode = 'flat'; // V16 stronger finish, fixed ON.
+  const preserveDetails = true; // Artist-approved garment/hair detail: fixed ON.
+  const gradePreset = 'gallery'; // Artist-approved Gallery grade: fixed ON.
   let cycleTimer = null;
   let decideTimer = null;
+  let randomCount = 0;
   let stream = null;
   let requestSerial = 0;
   let rafId = null;
@@ -117,21 +114,16 @@
     const steps = 10 + Math.floor(Math.random()*5);
     let count = 0;
     decide.disabled = true;
-    setStatus('The mirror is choosing arbitrarily. It does not measure your skin.');
+    setStatus('Choosing a RANDOM shade by chance. No camera analysis is involved in this choice.');
     decideTimer = setInterval(()=>{
       count++;
       changeClassification(count < steps ? index+1 : target,{silent:true});
       if(count>=steps){
         stopRandom();
-        setStatus('The mirror chose '+palette[index].id+' · '+palette[index].label+'. A random assignment, not an assessment.');
+        randomCount++;
+        setStatus('Chosen AT RANDOM: '+palette[index].id+' · '+palette[index].label+'. '+(randomCount > 1 ? 'The mirror changed its mind. Did you change? ' : '')+'This number was picked by chance, never by examining your appearance.');
       }
     },125);
-  });
-  linesButton.addEventListener('click',()=>{
-    showLines = !showLines;
-    linesButton.setAttribute('aria-pressed',String(showLines));
-    linesButton.textContent='ILLUSTRATED FEATURES: ' + (showLines ? 'ON' : 'OFF');
-    if(stream) setStatus(showLines ? 'Illustrated contours enabled. Look straight at the mirror to track eyes, brows, nose, lips and jaw.' : 'Illustrated contours disabled. Comparing against the plain V10 flat fill.');
   });
 
   const SIMPLIFY_MODES = {
@@ -139,46 +131,13 @@
     soft: { label:'SOFT · V15', blur:.85, lumaLevels:8, strength:.88, chromaStep:0, chromaMix:0 },
     flat: { label:'MORE FLAT · V16', blur:1.35, lumaLevels:5, strength:.98, chromaStep:18, chromaMix:.48 }
   };
-  function setMoreFlatEnabled(enabled) {
-    simplifyPortrait = Boolean(enabled);
-    simplificationMode = enabled ? 'flat' : 'off';
-    simplifyButton.setAttribute('aria-pressed', String(simplifyPortrait));
-    simplifyButton.textContent = 'MORE FLAT PORTRAIT: ' + (simplifyPortrait ? 'ON' : 'OFF');
-    setStatus((simplifyPortrait
-      ? 'More Flat ON: stronger smoothing and five broad tonal bands.'
-      : 'More Flat OFF: no portrait posterization or simplification.')
-      + ' Skin classifications stay exact.' + (!stream ? ' Turn on your camera to compare.' : ''));
-  }
-  simplifyButton.addEventListener('click', () => setMoreFlatEnabled(!simplifyPortrait));
-
-  detailsButton.addEventListener('click', () => {
-    preserveDetails = !preserveDetails;
-    detailsButton.setAttribute('aria-pressed', String(preserveDetails));
-    detailsButton.textContent = 'GARMENT & HAIR DETAIL: ' + (preserveDetails ? 'ON' : 'OFF');
-    setStatus(preserveDetails
-      ? 'Garment & Hair Detail on: restores hair, fabric and accessory texture without changing skin colours.'
-      : 'Garment & Hair Detail off: showing the original V12 rendering.');
-  });
-
-
-  // The grade controls are mutually exclusive. ORIGINAL is the zero-adjustment
-  // V14 comparison mode; neither grading nor ML classification occurs there.
+  // Gallery is the fixed exhibition colour grade. Other presets are retained
+  // internally for non-deployed render comparisons, not visitor controls.
   const GRADES = {
     original: { name:'Original', contrast:0, saturation:1, vibrance:0, warmth:0, lift:0 },
     gallery:  { name:'Gallery', contrast:.26, saturation:1.10, vibrance:.12, warmth:2, lift:1 },
     vivid:    { name:'Vivid', contrast:.40, saturation:1.19, vibrance:.17, warmth:3.5, lift:1.5 }
   };
-  function setGalleryGradeEnabled(enabled) {
-    gradePreset = enabled ? 'gallery' : 'original';
-    gradeButton.setAttribute('aria-pressed', String(enabled));
-    gradeButton.textContent = 'GALLERY COLOUR GRADE: ' + (enabled ? 'ON' : 'OFF');
-    setStatus((enabled
-      ? 'Gallery grade ON: richer textile colours and gentle contrast.'
-      : 'Gallery grade OFF: original ungraded colours.')
-      + ' Assigned skin colours remain exact.' + (!stream ? ' Turn on your camera to compare.' : ''));
-  }
-  gradeButton.addEventListener('click', () => setGalleryGradeEnabled(gradePreset !== 'gallery'));
-
   function clampChannel(v) { return v <= 0 ? 0 : v >= 255 ? 255 : Math.round(v); }
   // Contrast acts on luminance through a soft S curve. Vibrance selectively
   // brings up lower-chroma colours, avoiding extreme saturation in bold garments.
@@ -283,8 +242,7 @@
     sourceCtx.drawImage(video,sx,sy,sw,sh,0,0,w,h);
     sourceCtx.restore();
   }
-  // V16: two entirely optional rendering recipes on the EXACT SAME source image.
-  // OFF uses the untouched original. SOFT reproduces V15's V12 recipe bit-for-bit.
+  // V16: render the fixed five-band portrait on the EXACT SAME source image.
   // MORE FLAT has five luminance bands and gentle chroma palette consolidation,
   // making large, even graphic shapes. This is NOT applied to classified skin:
   // those pixels are replaced afterwards by their immutable exhibit HEX codes.
@@ -329,7 +287,7 @@
     return simplifyPortrait ? stylizedCanvas : sourceCanvas;
   }
 
-  // Stage 4: keep the existing V12 rendering untouched unless explicitly enabled.
+  // Stage 4: selective textile, hair and accessory detail is fixed ON.
   // The selfie multiclass model labels 1=hair, 4=clothing, 5=other/accessories.
   // We preserve V12's 2=body skin and 3=face skin completely: no outlining,
   // no blending, no grade changes, and no extra eyebrow-edge outlines.
@@ -372,7 +330,7 @@
         const mix = interior ? 1 : .20;
         const detail = Math.max(-15, Math.min(15, (l-neighbor)*.54)) * mix;
         // For the posterized rendering, recover ~83% of true textile detail.
-        // For unsimplified V12, leave the colour intact and just reinforce lines.
+        // The current exhibit uses the stronger simplification and detail recovery.
         const recover = simplifyPortrait ? .83 * mix : 0;
         for (let c = 0; c < 3; c++) {
           const base = pixels[p+c] + (sourcePixels[p+c]-pixels[p+c])*recover;
@@ -546,11 +504,11 @@
       firstFrameRendered=true;
       if(!segmenter) setStatus('Camera is live. Flat-colour painter unavailable; showing a gentle tinted preview.');
       else if(!faceLandmarker) setStatus('Flat-colour mirror active. Facial model could not load, so illustrated outlines are unavailable.');
-      else setStatus('Flat skin and illustrated contours active. More Flat and Gallery grade are ON; use either toggle for comparison.');
+      else setStatus('Your illustrated reflection is live. Choose any shade or press the random button; no shade is a measurement.');
     }
   }
 
-  function stopCamera(message='Camera off. The shade picker and random mirror still work.') {
+  function stopCamera(message='Camera off. Choose any shade or let the mirror choose randomly—no camera needed.') {
     requestSerial++;
     if(rafId!==null) cancelAnimationFrame(rafId);
     rafId=null;
@@ -604,7 +562,5 @@
     if(document.hidden){pauseCycle();stopRandom();if(stream)stopCamera('Camera stopped when you left the tab.');}
   });
   changeClassification(index,{silent:true});
-  // Keep the default-on controls synchronized with the active V16 rendering recipe.
-  simplifyButton.setAttribute('aria-pressed', String(simplifyPortrait));
-  gradeButton.setAttribute('aria-pressed', String(gradePreset === 'gallery'));
+  // All four approved renderers are fixed ON; there are no end-user tuning controls.
 })();
